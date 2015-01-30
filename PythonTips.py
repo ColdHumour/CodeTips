@@ -125,3 +125,35 @@ def find_path(p1, p2, dictionary):
                     return      # return any format you want
                 else: 
                     to_search.append(trace + [(cur_p, p)])
+
+
+# 并查集，根据二元关系分组
+class UF:
+    def __init__(self, elements):
+        self.idxmap = dict(zip(elements, elements))
+        self.size   = dict(zip(elements, [1]*len(elements)))
+
+    def find(self, p):
+        while p != self.idxmap[p]:
+            p, self.idxmap[p] = self.idxmap[p], self.idxmap[self.idxmap[p]]
+        return p
+    
+    def union(self, p, q):
+        p, q = self.find(p), self.find(q)
+        if p != q and self.size[p] < self.size[q]:
+            self.idxmap[p] = q
+            self.size[q] += self.size[p]
+        elif p != q and self.size[p] >= self.size[q]:
+            self.idxmap[q] = p
+            self.size[p] += self.size[q]
+    
+    @property
+    def n_groups(self):
+        return sum(p==q for p, q in self.idxmap.items()) 
+
+    @property
+    def groups(self):
+        gdict = {}
+        for p in self.idxmap:
+            gdict.setdefault(self.find(p), []).append(p)
+        return gdict.values()
