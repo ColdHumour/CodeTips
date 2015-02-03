@@ -9,6 +9,39 @@ Chinese: http://scrapy-chs.readthedocs.org/zh_CN/0.24/
 
 ---
 
+Install
+----------
+
+zope.interface: 
+
+    python setup.py install
+
+w3lib: 
+
+    python setup.py install
+
+scrapy: 
+
+    python setup.py install
+
+service-identity: 
+
+    move .egg to anaconda/scripts then easy_install.exe service-identity.egg 
+
+Install Scrapy
+
+    pip install scrapy
+
+Download and install 2008 Visual C++ Redistributable (compiler)
+
+    http://www.microsoft.com/en-us/download/details.aspx?id=29
+
+Download pywin32 executable and install it
+
+    http://sourceforge.net/projects/pywin32/files/pywin32/
+
+---
+
 Basic Commands
 ------------------
 
