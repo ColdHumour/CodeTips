@@ -82,14 +82,15 @@ def find_path_a_star(start, end, region):
 # Dijkstra Algorithm
 # 输入为距离矩阵，默认第一个为起始点，最后一个为结束点
 def dijkstra(distance):
-    S, T, D = set([0]), set(range(1,n)), distance[0][:]
-    while n-1 not in S:
-        p_move = min(T, key=lambda x: D[x])
-        S.add(p_move)
-        T.remove(p_move)
-        for p_togo in T:
+    n = len(distance)
+    D = dict(zip(range(1, n), distance[0][1:]))
+    while 1:
+        p_move = min(D.keys(), key = D.get)
+        if p_move == n-1:
+            return D[n-1]
+        for p_togo in D:
             D[p_togo] = min(D[p_togo], D[p_move] + distance[p_move][p_togo])
-    return D[-1]
+        del D[p_move]
 
 
 
@@ -128,15 +129,18 @@ def find_path(p1, p2, dictionary):
 
 
 # 并查集，根据二元关系分组
+from collections import defaultdict
+
 class UF:
     def __init__(self, elements):
         self.idxmap = dict(zip(elements, elements))
         self.size   = dict(zip(elements, [1]*len(elements)))
 
     def find(self, p):
-        while p != self.idxmap[p]:
-            p, self.idxmap[p] = self.idxmap[p], self.idxmap[self.idxmap[p]]
-        return p
+        c = self.idxmap[p]
+        if p != c:
+            c = self.idxmap[p] = self.find(c)
+        return c
     
     def union(self, p, q):
         p, q = self.find(p), self.find(q)
@@ -153,7 +157,7 @@ class UF:
 
     @property
     def groups(self):
-        gdict = {}
+        gdict = defaultdict(set)
         for p in self.idxmap:
-            gdict.setdefault(self.find(p), []).append(p)
+            gdict[self.find(p)].add(p)
         return gdict.values()
