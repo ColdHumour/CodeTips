@@ -128,6 +128,7 @@ def find_path(p1, p2, dictionary):
                     to_search.append(trace + [(cur_p, p)])
 
 
+
 # 并查集，根据二元关系分组
 from collections import defaultdict
 

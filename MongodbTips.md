@@ -250,6 +250,68 @@ PyMongo启动
         clt.update({}, {'$..': ...}, true)         # upsert，如果查询不到就直接insert
         clt.update({}, {'$..': ...}, false, true)  # 全量更新，对所有的匹配结果都更新
 
+- 索引
 
+    用于加速查找，一定要创建查询中用到的所有键的索引
 
+    (1) ensureIndex
 
+        clt.ensureIndex({key1: 1, key2: 1, ...}) # 给key1, key2, ...建立索引
+
+        # 值有1和-1两种，其中1表示升序，-1表示降序
+        # key顺序决定排序的顺序，即先按key1的升（降）序，再按key2的升（降）序，依此类推
+        # 索引的缺陷是增删改时会增加额外的开销
+
+    (2) 内嵌文档索引
+
+        clt.ensureIndex({key1.key11: 1, ...})   # 对数组key1中的key11建立索引
+
+    (3) 去重
+
+        clt.ensureIndex({key: 1, ...}, {'unique': true, 'dropDups': true}) # 保证该索引的值唯一，并且删除重复文档，仅保留首个文档
+
+    (4) 索引命名
+
+        clt.ensureIndex({key: 1, ...}, {'name': ...}) # 对建立的索引进行命名
+
+    (5) 索引管理
+
+        system.namespaces # 索引的名字在clt.$之后
+
+    (6) 索引删除
+    
+        clt.drop_indexes() # 删除全部索引
+        db.runCommand({'dropIndexes': ..., 'index': ...}) # 如果index置'*'则删除全部索引 
+
+    (7) explain
+
+        # 用于查询方法后，查看具体的游标和索引使用情况
+        clt.find().explain()
+
+- 聚合
+
+    (1) count
+
+        clt.count() # 查询集合中的文档数量
+        clt.count({key: val}) # 查询数量时增加查询条件
+
+    (2) distinct
+
+        clt.distinct(key) # 查询clt.key的所有不同的值
+
+    (3) group
+
+        clt.group(self, key, condition, initial, reduce, finalize=None)
+        # 按condition查找过的key，再按initial和reduce聚合，其中reduce是字符串形式的JavaScript函数，返回一个文档列表
+
+        from bson.code import Code
+        reducer = Code('''
+            function () {
+                ...
+            }
+        ''')
+
+    (4) mapreduce
+
+        clt.map_reduce(self, map, reduce, out, full_response=False, **kwargs)
+        # 映射聚合，其中map和reduce都是字符串形式的JavaScript函数，返回一个临时的数据集合
