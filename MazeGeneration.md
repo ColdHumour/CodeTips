@@ -1,6 +1,8 @@
 MAZE GENERATION
 ===================
 
+---
+
 参考文献
 ---------
 
@@ -11,7 +13,7 @@ http://devmag.org.za/2009/04/25/perlin-noise/
 http://paulbourke.net/fractals/noise/
 http://www.redblobgames.com/articles/noise/2d/
 
-
+-----
 
 关于噪声与迷宫
 ----------------
@@ -183,6 +185,7 @@ You might use noise as a threshold function. For example, you can say that any t
 
 - By changing the exponent you can get different colors of noise from the same set of random numbers.
 
+----
 
 迷宫生成
 -----------------
