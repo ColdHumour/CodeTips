@@ -6,7 +6,10 @@ PYQT4 TIPS
 参考资料：
 
 http://www.cnblogs.com/rollenholt/archive/2011/11/16/2251904.html
+
 http://zetcode.com/gui/pyqt4/introduction/
+
+http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
 
 ---
 
@@ -230,6 +233,50 @@ http://zetcode.com/gui/pyqt4/introduction/
             im_q = QtGui.QImage()
             im_q.loadFromData(fs.getvalue(), 'png')
             return im_q
+
+- Matplotlib绘图，FigureCanvas
+        
+    参考资料：http://www.myext.cn/other/a_29050.html
+
+        from matplotlib.figure import Figure
+        from matplotlib.backends.backend_qt4agg import FigureCanvasQTAgg as FigureCanvas
+        import matplotlib.pyplot as plt
+
+        figure = plt.gcf()
+        canvas = FigureCanvas(figure) # 这样canvas可以当widget来用
+        
+        # 使用plt.plot等一系列方法进行绘图
+        # 如果要重绘需要plt.gcf().clear()
+
+        canvas.draw()
+
+    多子图，这种方法更加robust
+
+        figure = plt.figure() 
+        self.canvas = FigureCanvas(figure)
+#         self.canvas.setFixedSize(500, 500)  # 如不指定大小则自动铺满窗口
+        self.sp1 = figure.add_subplot(211)
+        self.sp2 = figure.add_subplot(212)
+        self.draw(self.sp1, ...)
+
+    动态绘图，利用QtCore.QThread
+
+        class MyThread(QtCore.QThread):
+            def __init__(self, MyWindow):
+                super(MyThread, self).__init__()
+                self.window = MyWindow
+                
+            # 重载方法，名字必须是run
+            def run(self):
+                do something
+
+        window = MyWindow()
+        window.show()
+
+        # 或者在window中调用，以便实现更多控制
+        # self.thread = MyWindow(self)
+        # self.thread.start() # 可做信号槽用
+        # self.thread.quit()  # 可做信号槽用
 
 - 消息框，QtGui.QMessageBox
 
