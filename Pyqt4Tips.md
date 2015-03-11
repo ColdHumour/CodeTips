@@ -278,6 +278,15 @@ http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
         # self.thread.start() # 可做信号槽用
         # self.thread.quit()  # 可做信号槽用
 
+        class MyWindow(QtGui.QWidget):
+
+            ...
+
+            # 重载退出事件，保证thread退出
+            def closeEvent(self, event):
+                self.pause_flag = 1
+                event.accept()
+
 - 消息框，QtGui.QMessageBox
 
         # 主要用作信号槽的触发后续
