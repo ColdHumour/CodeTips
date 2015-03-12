@@ -254,7 +254,7 @@ http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
 
         figure = plt.figure() 
         self.canvas = FigureCanvas(figure)
-#         self.canvas.setFixedSize(500, 500)  # 如不指定大小则自动铺满窗口
+        # self.canvas.setFixedSize(500, 500)  # 如不指定大小则自动铺满窗口
         self.sp1 = figure.add_subplot(211)
         self.sp2 = figure.add_subplot(212)
         self.draw(self.sp1, ...)
