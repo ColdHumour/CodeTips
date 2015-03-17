@@ -133,14 +133,17 @@ http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
 
         textFile = QtGui.QLineEdit() # 单行
         gridLayout.addWidget(textFile)
+        self.connect(textFile, QtCore.SIGNAL('returnPressed()'), self.control) # 回车按下事件
         
         passwordFile = QtGui.QLineEdit()
         passwordFile.setEchoMode(QtGui.QLineEdit.Password) # 隐藏输入
         gridLayout.addWidget(passwordFile)
+        # passwordFile.text() # 获得输入框的值
         
         textArea = QtGui.QTextEdit() # 多行
         textArea.setText("preset text")
         gridLayout.addWidget(textArea)
+        # textArea.toPlainText() # 获得输入框的值
                 
 - 单选和复选框，QRadioButton，QCheckBox
 
@@ -157,6 +160,7 @@ http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
         checkbox2 = QtGui.QCheckBox("checkbox2")
         checkbox2.setChecked(True) # 预选
         gridLayout.addWidget(checkbox2, 1, 1)
+        self.connect(self.checkbox, QtCore.SIGNAL("stateChanged(int)"), self.control)
 
 - 信号与信号槽，connect
 
@@ -215,6 +219,19 @@ http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
 
         self.connect(slider, QtCore.SIGNAL("valueChanged(int)"),
                      lcd, QtCore.SLOT("display(int)")) # 直接connect的写法
+
+- 下拉框，QtGui.QComboBox
+
+        combo = QtGui.QComboBox()
+        combo.addItems(['a', 'b', 'c'])
+        self.connect(combo, QtCore.SIGNAL("currentIndexChanged(const QString&)"), self.control)
+        # combo.currentText()
+
+- 快捷键，QtGui.QShortcut
+
+        shcut = QtGui.QShortcut(QWidget)  # 必须要加parent widget
+        shcut.setKey("CTRL+RETURN")
+        self.connect(shcut, QtCore.SIGNAL("activated()"), self.control)
 
 - 图片，使用QLabel.setPixmap
 
