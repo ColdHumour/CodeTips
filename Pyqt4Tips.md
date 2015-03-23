@@ -159,7 +159,7 @@ http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
         
         checkbox2 = QtGui.QCheckBox("checkbox2")
         checkbox2.setChecked(True) # 预选
-        gridLayout.addWidget(checkbox2, 1, 1)
+        checkbox2.isChecked()      # 状态
         self.connect(self.checkbox, QtCore.SIGNAL("stateChanged(int)"), self.control)
 
 - 信号与信号槽，connect
