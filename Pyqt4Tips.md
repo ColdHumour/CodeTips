@@ -181,6 +181,46 @@ http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
             if self.radio.isChecked(): # 根据选框状态改变选框文字 
                 self.radio.setText("here")
 
+- 按钮悬停，QtCore.pyqtSignal(bool)
+        
+        # 方法一：重载QPushButton当中的enterEvent和leaveEvent
+        class HoverButton(QtGui.QPushButton):
+            def __init__(self, *args):
+                super(HoverButton, self).__init__(*args)
+
+            def enterEvent(self, event):              # 进入动作
+                self.setStyleSheet("background-color: red")
+
+            def leaveEvent(self, event):              # 离开动作
+                self.setStyleSheet("background-color: none")
+
+        class Window(QtGui.QWidget):
+            self.button = HoverButton()
+
+        # 方法二：设置信号emit
+        class HoverButton(QtGui.QPushButton):
+            hover = QtCore.pyqtSignal(bool)           # 信号设置
+        
+            def __init__(self, *args):
+                super(HoverButton, self).__init__(*args)
+                self.setMouseTracking(True)           # 鼠标追踪
+
+            def enterEvent(self, event):              # 进入动作
+                self.hover.emit(True)
+
+            def leaveEvent(self, event):              # 离开动作
+                self.hover.emit(False)
+
+        class Window(QtGui.QWidget):
+            self.button = HoverButton()
+            self.button.hover.connect(self.changeStatusWhenHovering)
+
+            def changeStatusWhenHovering(self, signal):
+                if signal:
+                    ...
+                else:
+                    ...
+
 - 关闭窗口（ipython notebook不可用）
 
         button = QtGui.QPushButton("OK")
