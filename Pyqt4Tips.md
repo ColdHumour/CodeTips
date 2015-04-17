@@ -96,6 +96,9 @@ http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
                 label2 = QtGui.QLabel('label2')
                 label3 = QtGui.QLabel('label3')
                 label4 = QtGui.QLabel('label4')
+
+                label1.setFixedHeight(100)  # 控件固定高度
+                label1.setFixedWidth(100)   # 控件固定宽度
                 
                 gridLayout = QtGui.QGridLayout()
                 gridLayout.addWidget(label1, 0, 0)
@@ -221,6 +224,31 @@ http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
                 else:
                     ...
 
+- 按钮样式，setStyleSheet
+
+        # 对于格式方面而言就没必要费心去写信号和信号槽了
+
+        btn_style = '''
+            QPushButton
+            {
+                color: rgb(0, 0, 0);
+                background-color: rgb(167, 205, 255);
+                border:none;
+                padding: 3px;
+                font-family: "Verdana";
+                font-size: 15px;
+            }
+            QPushButton:hover
+            {
+                background-color: rgb(85, 170, 255);
+            }
+            QPushButton:pressed, QPushButton:checked
+            {
+                background-color: rgb(167, 205, 255);
+            }'''
+
+        self.gen_btn.setStyleSheet(btn_style)
+
 - 关闭窗口（ipython notebook不可用）
 
         button = QtGui.QPushButton("OK")
@@ -272,6 +300,20 @@ http://pyqt.sourceforge.net/Docs/PyQt4/classes.html
         shcut = QtGui.QShortcut(QWidget)  # 必须要加parent widget
         shcut.setKey("CTRL+RETURN")
         self.connect(shcut, QtCore.SIGNAL("activated()"), self.control)
+
+- 按键事件，keyPressEvent
+
+        # 重载QWidget中的keyPressEvent方法
+        def keyPressEvent(self, event):
+            print event.key(), event.text()
+            # event.key() == QtCore.Qt.Key_Right # 键名
+            # event.text() == 'a'                # 键值
+
+        # 注意，如果存在文本框或者按钮等，其keyPressEvent方法可能会和主窗口的冲突，此时需要考虑重载该子类的keyPressEvent方法，或者
+        
+            self.button.setFocusProxy(self)
+
+        # 因为keyPressEvent是对setFocusPolicy敏感的
 
 - 图片，使用QLabel.setPixmap
 
