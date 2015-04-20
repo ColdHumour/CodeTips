@@ -19,7 +19,8 @@ Windows Vista/7 下show命令无法正常运行解决办法：
 
 ## 图片和base64字符串互转
 
-    import base64, StringIO, Image
+    import base64, StringIO
+    from PIL import Image
 
     f = open(r'image.jpg', 'rb')
     imagestr = base64.b64encode(f.read()) 
