@@ -527,3 +527,27 @@ scrapy有默认的网址过滤器，可以避免爬取重复的页面，但是st
     DUPEFILTER_DEBUG = True
 
 其中DEBUG为True的目的是打印所有的重复url过滤信息
+
+
+####17. 并发
+
+对于载入页面时间较长的网页来说，降低并发数量并加长下载时间是比较有效的减少Timeout Error的方法，在settings.py当中可以进行修改相关参数
+
+对于下载时间：
+
+    DOWNLOAD_DELAY
+    # The amount of time (in secs) that the downloader should wait before downloading consecutive pages from the same website. This can be used to throttle the crawling speed to avoid hitting servers too hard. Decimal numbers are supported. Example: Default: 0
+
+    DOWNLOAD_TIMEOUT
+    # The amount of time (in secs) that the downloader will wait before timing out. Default: 180
+
+对于并发相关：
+
+    CONCURRENT_ITEMS
+    # Maximum number of concurrent items (per response) to process in parallel in the Item Processor (also known as the Item Pipeline). Default: 100
+
+    CONCURRENT_REQUESTS
+    # The maximum number of concurrent (ie. simultaneous) requests that will be performed by the Scrapy downloader. Default: 16
+
+    CONCURRENT_REQUESTS_PER_DOMAIN
+    # The maximum number of concurrent (ie. simultaneous) requests that will be performed to any single domain. Default: 8
