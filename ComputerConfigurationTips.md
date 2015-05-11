@@ -20,6 +20,16 @@ sublime text
 
     (2) pylinter （需要先 pip install pylint）
 
+            Preferences - Package Settings - Pylinter - Settings User:
+
+            {
+                "disable": ["C0103", "C0111", "C0304", "W0231", "W0102", 
+                            "R0903", "W0702", "W0613", "C0326", "R0901",
+                            "C0330", "W0201", "W0212", "W0612", "E1121",
+                            "W0621", "W0614", "C0321", "C0301", "R0915",
+                            "R0912", "R0914", "R0913"]
+            }
+
 3. 字体
 
     (1) 下载安装 Microsoft Yahei Mono
