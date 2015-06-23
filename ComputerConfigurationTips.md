@@ -1,4 +1,4 @@
-COMPUTER CNFIGURATION TIPS
+COMPUTER CONFIGURATION TIPS
 =============================
 
 sublime text
@@ -56,3 +56,21 @@ Firefox
             #PersonalToolbar {-moz-box-ordinal-group: 3 !important;}  /*书签列 */
             #TabsToolbar {-moz-box-ordinal-group: 4 !important;}  /*分页列 */
             #addon-bar {-moz-box-ordinal-group: 45 !important;}  /*fx28以下的附加组件栏 */
+            
+Ipython Notebook
+------------------
+
+1. 创建个性化配置文件
+
+    ipython profile create
+
+2. Windows下，打开
+    
+    Documents and Settings\username\.ipython\profile_default\ipython_notebook_config.py
+
+3. Ipython 2.x
+
+    c.NotebookApp.notebook_dir = u'F:\\lab'                  # 工作路径
+    c.FileNotebookManager.notebook_dir = u'F:\\lab\\ipython' # Notebook存储路径
+
+4. Ipython 3.x
