@@ -74,3 +74,6 @@ Ipython Notebook
         c.FileNotebookManager.notebook_dir = u'F:\\lab\\ipython' # Notebook存储路径
 
 4. Ipython 3.x
+
+        c.NotebookApp.notebook_dir = u'D:\\lab'              # 工作路径
+        c.FileContentsManager.root_dir = u'D:\\lab\\ipython' # Notebook存储路径
