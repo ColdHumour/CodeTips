@@ -78,3 +78,7 @@ Ipython Notebook
 
         c.NotebookApp.notebook_dir = u'D:\\lab'              # 工作路径
         c.FileContentsManager.root_dir = u'D:\\lab\\ipython' # Notebook存储路径
+        
+5. 安装MathJax到本地。打开命令行，运行ipython，输入
+
+        from IPython.external import mathjax; mathjax.install_mathjax()
