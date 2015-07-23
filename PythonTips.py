@@ -162,3 +162,12 @@ class UF:
         for p in self.idxmap:
             gdict[self.find(p)].add(p)
         return gdict.values()
+
+
+# 最大连续子序列和
+def max_subarray(seq):
+    max_so_far = max_ending_here = 0
+    for x in seq:
+        max_ending_here = max(0, max_ending_here + x)
+        max_so_far = max(max_so_far, max_ending_here)
+    return max_so_far
