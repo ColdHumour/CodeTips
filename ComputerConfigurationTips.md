@@ -40,24 +40,6 @@ sublime text
             "font_size": 14,
             "font_face": "Microsoft Yahei Mono",
 
-
-Firefox
-------------
-
-1. 必装扩展
-
-    (1) FoxyProxy
-
-    (2) Adblock
-
-    (3) Stylish
-
-            #toolbar-menubar {-moz-box-ordinal-group: 1 !important;}  /*选单列 */
-            #nav-bar {-moz-box-ordinal-group: 2 !important;}  /*导航列 */
-            #PersonalToolbar {-moz-box-ordinal-group: 3 !important;}  /*书签列 */
-            #TabsToolbar {-moz-box-ordinal-group: 4 !important;}  /*分页列 */
-            #addon-bar {-moz-box-ordinal-group: 45 !important;}  /*fx28以下的附加组件栏 */
-            
 Ipython Notebook
 ------------------
 
@@ -82,3 +64,37 @@ Ipython Notebook
 5. 安装MathJax到本地。打开命令行，运行ipython，输入
 
         from IPython.external import mathjax; mathjax.install_mathjax()
+
+Firefox
+------------
+
+1. 必装扩展
+
+    (1) FoxyProxy
+
+    (2) Adblock
+
+    (3) Stylish
+
+            #toolbar-menubar {-moz-box-ordinal-group: 1 !important;}  /*选单列 */
+            #nav-bar {-moz-box-ordinal-group: 2 !important;}  /*导航列 */
+            #PersonalToolbar {-moz-box-ordinal-group: 3 !important;}  /*书签列 */
+            #TabsToolbar {-moz-box-ordinal-group: 4 !important;}  /*分页列 */
+            #addon-bar {-moz-box-ordinal-group: 45 !important;}  /*fx28以下的附加组件栏 */
+
+Chrome
+-------------
+
+1. 必装扩展
+    
+    (1) SwitchyOmega
+
+    (2) ARC Welder (Android模拟器)
+
+        下载ARC Welder (https://chrome.google.com/webstore/detail/arc-welder/emfinbmielocnlhgmfkkmkngdoccbadn)
+
+        下载ARChon Runtime (http://archon-runtime.github.io/)， 解压
+
+        在Chrome扩展程序中用开发者模式载入ARChon Runtime
+
+        地址栏敲入chrome://plugins/ 开启Native Client
