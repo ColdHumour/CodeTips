@@ -49,7 +49,11 @@ Ipython Notebook
 
 2. Windows下，打开
     
-        Documents and Settings\username\.ipython\profile_default\ipython_notebook_config.py
+        C:\Documents and Settings\<username>\.ipython\profile_default\ipython_notebook_config.py
+
+        或者
+
+        C:\users\<username>\.ipython\profile_default\ipython_notebook_config.py
 
 3. Ipython 2.x
 
@@ -60,8 +64,105 @@ Ipython Notebook
 
         c.NotebookApp.notebook_dir = u'D:\\lab'              # 工作路径
         c.FileContentsManager.root_dir = u'D:\\lab\\ipython' # Notebook存储路径
-        
-5. 安装MathJax到本地。打开命令行，运行ipython，输入
+
+5. 更改notebook样式
+
+        打开 ~\.ipython\profile_default\static\custom\custom.css，改成以下代码：
+
+        /* 需要先装 Microsoft Yahei Mono 字体，否则把 font-family 改成其他名字 */
+        div#notebook, div.CodeMirror, div.output_area pre, div.output_wrapper, div.prompt {
+          font-family: 'Microsoft Yahei Mono', monospace !important;
+        }
+
+        /* GLOBALS */
+        body {background-color: #eff1f5;}
+        a {color: #8fa1b3;}
+
+        /* INTRO PAGE */
+        .toolbar_info, .list-container {color: #1c3657;}
+
+        /* NOTEBOOK */
+
+        /* comment out this line to bring the toolbar back */
+        /* div#maintoolbar, div#header {display: none !important;} */
+
+        div#notebook {border-top: none;}
+
+        div.input_prompt {color: #c59820;}
+        div.output_prompt {color: #c98344;}
+        div.input_area {
+          border-radius: 0px;
+          border: 1px solid #9ea7a6;
+        }
+        div.output_area pre {font-weight: normal; color: #2a343a;}
+        div.output_subarea {font-weight: normal; color: #2a343a;}
+
+        .rendered_html table, .rendered_html th, .rendered_html tr, .rendered_html td {
+          border: 1px  #3f4944 solid;
+          color: #3f4944;
+        }
+        div.output_html { font-family: 'Microsoft Yahei Mono'; }
+        table.dataframe tr {border: 1px #2a343a;}
+
+        div.cell.selected {border-radius: 0px;}
+        div.cell.edit_mode {border-radius: 0px; border: thin solid #c98344;}
+        div.text_cell_render, div.output_html {color: #2a343a;}
+
+        span.ansiblack {color: #1c3657;}
+        span.ansiblue {color: #b02f30;}
+        span.ansigray {color: #84898c;}
+        span.ansigreen {color: #237986;}
+        span.ansipurple {color: #c59820;}
+        span.ansired {color: #2a5491;}
+        span.ansiyellow {color: #a03b1e;}
+
+        div.output_stderr {background-color: #2a5491;}
+        div.output_stderr pre {color: #a7cfa3;}
+
+        .cm-s-ipython.CodeMirror {background: #eff1f5; color: #1c3657;}
+        .cm-s-ipython div.CodeMirror-selected {background: #a7cfa3 !important;}
+        .cm-s-ipython .CodeMirror-gutters {background: #b5d8f6; border-right: 0px;}
+        .cm-s-ipython .CodeMirror-linenumber {color: #84898c;}
+        .cm-s-ipython .CodeMirror-cursor {border-left: 1px solid #3f4944 !important;}
+
+        .cm-s-ipython span.cm-comment {color: #c98344;}
+        .cm-s-ipython span.cm-atom {color: #c59820;}
+        .cm-s-ipython span.cm-number {color: #c59820;}
+
+        .cm-s-ipython span.cm-property, .cm-s-ipython span.cm-attribute {color: #237986;}
+        .cm-s-ipython span.cm-keyword {color: #2a5491;}
+        .cm-s-ipython span.cm-string {color: #a03b1e;}
+        .cm-s-ipython span.cm-operator {color: #c98344;}
+        .cm-s-ipython span.cm-builtin {color: #c59820;}
+
+        .cm-s-ipython span.cm-variable {color: #237986;}
+        .cm-s-ipython span.cm-variable-2 {color: #484d79;}
+        .cm-s-ipython span.cm-def {color: #43820d;}
+        .cm-s-ipython span.cm-error {background: #ff3333; color: #eff1f5;}
+        .cm-s-ipython span.cm-bracket {color: #2a343a;}
+        .cm-s-ipython span.cm-tag {color: #2a5491;}
+        .cm-s-ipython span.cm-link {color: #c59820;}
+
+        .cm-s-ipython .CodeMirror-matchingbracket { text-decoration: underline; color: #1c3657 !important;}
+
+6. 默认显示行号
+
+        打开 ~\.ipython\profile_default\static\custom\custom.js，在末尾添加以下代码：
+
+        define([
+            'base/js/namespace',
+            'base/js/events'
+            ], 
+            function(IPython, events) {
+                events.on("app_initialized.NotebookApp", 
+                    function () {
+                        IPython.Cell.options_default.cm_config.lineNumbers = true;
+                    }
+                );
+            }
+        );
+
+7. 安装MathJax到本地。打开命令行，运行ipython，输入
 
         from IPython.external import mathjax; mathjax.install_mathjax()
 
