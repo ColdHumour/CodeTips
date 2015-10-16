@@ -166,28 +166,6 @@ Ipython Notebook
 
         from IPython.external import mathjax; mathjax.install_mathjax()
 
-Cython
-------------
-
-1. 编译器选择
-
-    (1) 首选 Microsoft Visual Studio
-    
-    (2) 在没有的情况下，对Python2.7和3.2，可以下载 Microsoft Visual C++ Compiler for Python 2.7，网址为 http://www.microsoft.com/en-us/download/details.aspx?id=44266 。
-
-        安装完成后，对 ~python\Lib\distutils\msvc9compiler.py 中的 find_vcvarsall() 进行修改，注释掉原代码，改为：
-
-            # 注意更改路径
-            def find_vcvarsall(version):
-                productdir= "C:/Users/UserName/AppData/Local/Programs/Common/Microsoft/Visual C++ for Python/9.0"
-                vcvarsall = os.path.join(productdir, "vcvarsall.bat")
-                if os.path.isfile(vcvarsall):
-                    return vcvarsall
-                else:
-                    return None
-
-    (3) 对3.3及以上，详见https://github.com/cython/cython/wiki/CythonExtensionsOnWindows
-
 Firefox
 ------------
 
