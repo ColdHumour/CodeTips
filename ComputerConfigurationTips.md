@@ -70,8 +70,8 @@ Ipython Notebook
         打开 ~\.ipython\profile_default\static\custom\custom.css，改成以下代码：
 
         /* 需要先装 Microsoft Yahei Mono 字体，否则把 font-family 改成其他名字 */
-        div#notebook, div.CodeMirror, div.output_area pre, div.output_wrapper, div.prompt {
-          font-family: 'Microsoft Yahei Mono', monospace !important;
+        div#notebook, div.CodeMirror, div.output_area pre, .highlight pre, div.output_wrapper, div.prompt {
+          font-family: 'Microsoft Yahei Mono', Monaco, Lucida, Courier, monospace !important;
         }
 
         /* GLOBALS */
