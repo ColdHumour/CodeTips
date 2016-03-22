@@ -33,34 +33,41 @@ sublime text
             "font_size": 14,
             "font_face": "Microsoft Yahei Mono",
 
-Ipython Notebook
+Jupyter Notebook
 ------------------
 
 1. 创建个性化配置文件
 
-        ipython profile create
+        jupyter notebook --generate-config
 
-2. Windows下，打开
+2. 确认kernel路径
+
+        ipython kernelspec list
+
+        打开输出的路径，打开kernel.json，更改argv里的python.exe的路径到正确路径
+
+        一般为~\Anaconda\python.exe
+
+3. Windows下，打开
     
-        C:\Documents and Settings\<username>\.ipython\profile_default\ipython_notebook_config.py
+        C:\Documents and Settings\<username>\.jupyter\jupyter_notebook_config.py
 
         或者
 
-        C:\users\<username>\.ipython\profile_default\ipython_notebook_config.py
+        C:\users\<username>\.jupyter\jupyter_notebook_config.py
 
-3. Ipython 2.x
+4. Jupyter 4.1
 
-        c.NotebookApp.notebook_dir = u'F:\\lab'                  # 工作路径
-        c.FileNotebookManager.notebook_dir = u'F:\\lab\\ipython' # Notebook存储路径
+        c.NotebookApp.notebook_dir = u'D:\\lab\\ipython'  # Notebook存储路径
 
-4. Ipython 3.x
+        但现在不能通过config改工作路径了，需要在打开的notebook中运行：
 
-        c.NotebookApp.notebook_dir = u'D:\\lab'              # 工作路径
-        c.FileContentsManager.root_dir = u'D:\\lab\\ipython' # Notebook存储路径
+        import os
+        os.chdir("D:\\lab")
 
 5. 更改notebook样式
 
-        打开 ~\.ipython\profile_default\static\custom\custom.css，改成以下代码：
+        新建 ~\.jupyter\custom\custom.css，添加以下代码：
 
         /* 需要先装 Microsoft Yahei Mono 字体，否则把 font-family 改成其他名字 */
         div#notebook, div.CodeMirror, div.output_area pre, .highlight pre, div.output_wrapper, div.prompt {
@@ -140,7 +147,7 @@ Ipython Notebook
 
 6. 默认显示行号
 
-        打开 ~\.ipython\profile_default\static\custom\custom.js，在末尾添加以下代码：
+        新建 ~\.jupyter\custom\custom.js，添加以下代码：
 
         define([
             'base/js/namespace',
