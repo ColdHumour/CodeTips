@@ -42,9 +42,9 @@ Jupyter Notebook
 
 2. 确认kernel路径
 
-        ipython kernelspec list
+        jupyter kernelspec list
 
-        打开输出的路径，打开kernel.json，更改argv里的python.exe的路径到正确路径
+        打开输出的路径，如果有kernel.json文件，则更改argv里的python.exe的路径到正确路径
 
         一般为~\Anaconda\python.exe
 
@@ -58,12 +58,8 @@ Jupyter Notebook
 
 4. Jupyter 4.1
 
-        c.NotebookApp.notebook_dir = u'D:\\lab\\ipython'  # Notebook存储路径
-
-        但现在不能通过config改工作路径了，需要在打开的notebook中运行：
-
-        import os
-        os.chdir("D:\\lab")
+        c.NotebookApp.notebook_dir = u'F:\\lab\\'     # 工作路径
+        c.FileContentsManager.root_dir = u'F:\\lab\\ipython'    # Notebook存储路径
 
 5. 更改notebook样式
 
