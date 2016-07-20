@@ -162,6 +162,18 @@ Jupyter Notebook
 
         from IPython.external import mathjax; mathjax.install_mathjax()
 
+命令行工具
+---------------
+
+1. Cmder: Powerful command line management tool
+
+    (1) http://cmder.net/
+
+2. Gow: Light version of Cygwin
+
+    (1) https://github.com/bmatzelle/gow
+
+
 Firefox
 ------------
 
