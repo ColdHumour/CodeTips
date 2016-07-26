@@ -18,11 +18,11 @@ sublime text
 
     (1) tomorrow
 
-    (2) SublimeLinter （需要先 pip install pylint）
+    (2) [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter-for-ST2) （需要先 pip install pylint）
 
-    (3) SublimeJEDI
+    (3) [SublimeJEDI](https://github.com/srusskih/SublimeJEDI)
 
-    (4) SublimeCodeIntel
+    (4) SublimeCodeIntel （和JEDI同时装可能有bug，只装JEDI一般就够了）
 
 3. 字体
 
