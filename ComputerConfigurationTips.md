@@ -141,18 +141,20 @@ Jupyter Notebook
 
         .cm-s-ipython .CodeMirror-matchingbracket { text-decoration: underline; color: #1c3657 !important;}
 
-6. 默认显示行号
+6. 默认显示行号和使用SublimeText的快捷键
 
         新建 ~\.jupyter\custom\custom.js，添加以下代码：
 
         define([
             'base/js/namespace',
-            'base/js/events'
+            'base/js/events',
+            'codemirror/keymap/sublime'
             ], 
-            function(IPython, events) {
+            function(IPython, events, sublime_keymap) {
                 events.on("app_initialized.NotebookApp", 
                     function () {
                         IPython.Cell.options_default.cm_config.lineNumbers = true;
+                        IPython.Cell.options_default.cm_config.keyMap = 'sublime';
                     }
                 );
             }
