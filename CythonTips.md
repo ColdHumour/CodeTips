@@ -20,9 +20,9 @@ Cython: A Guide to Python Programmers
 
     安装完成后，对 ~python\Lib\distutils\msvc9compiler.py 中的 find_vcvarsall() 进行修改，注释掉原代码，改为：
 
+        # 注意更改路径
         def find_vcvarsall(version):
-            username = "UserName"  # 注意更改为正确的名称
-            productdir = "C:/Users/{}/AppData/Local/Programs/Common/Microsoft/Visual C++ for Python/9.0".format(username)
+            productdir= "C:/Users/UserName/AppData/Local/Programs/Common/Microsoft/Visual C++ for Python/9.0"
             vcvarsall = os.path.join(productdir, "vcvarsall.bat")
             if os.path.isfile(vcvarsall):
                 return vcvarsall
