@@ -154,7 +154,7 @@ Jupyter Notebook
                 events.on("app_initialized.NotebookApp", 
                     function () {
                         IPython.Cell.options_default.cm_config.lineNumbers = true;
-                        IPython.Cell.options_default.cm_config.keyMap = 'sublime';
+                        // IPython.Cell.options_default.cm_config.keyMap = 'sublime';
                     }
                 );
             }
@@ -170,6 +170,11 @@ Jupyter Notebook
 1. Cmder: Powerful command line management tool
 
     (1) http://cmder.net/
+
+	(2) 个性化：
+
+		settings - Tab bar - Tabs(...) - Tabs on bottom (uncheck)
+		settings - Task bar - Taskbar buttons - Show overlay icon (uncheck)
 
 2. Gow: Light version of Cygwin
 
