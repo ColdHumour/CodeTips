@@ -32,6 +32,8 @@ sublime text
 
             "font_size": 14,
             "font_face": "Microsoft Yahei Mono",
+    		"tab_size": 4,
+    		"translate_tabs_to_spaces": true,
 
 Jupyter Notebook
 ------------------
@@ -167,14 +169,19 @@ Jupyter Notebook
 命令行工具
 ---------------
 
-1. Cmder: Powerful command line management tool
+1. ConEmu: Powerful command line management tool
 
-    (1) http://cmder.net/
+    (1) https://www.fosshub.com/ConEmu.html
 
 	(2) 个性化：
 
+		settings - Main - Main console font - Microsoft Yahei Mono
+		settings - Appearance - Generic - Single instance mode (check)
+		settings - Appearance - Generic - Multiple consoles... (check)
 		settings - Tab bar - Tabs(...) - Tabs on bottom (uncheck)
+		settings - Tab bar - Tab templates (...) - Console: [%s]
 		settings - Task bar - Taskbar buttons - Show overlay icon (uncheck)
+		settings - Task bar - Taskbar buttons - Active console only (choose)
 
 2. Gow: Light version of Cygwin
 
