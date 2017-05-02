@@ -170,6 +170,26 @@ Jupyter Notebook
 
         from IPython.external import mathjax; mathjax.install_mathjax()
 
+其他Python库
+---------------
+
+1. cvxopt
+	
+	(1) 下载numpy+mkl的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
+	
+	(2) 下载cvxopt的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#cvxopt
+
+	(3) 按顺序 pip install ~.whl 即可
+
+2. matplotlib和seaborn的中文显示
+
+	(1) 下载 Microsoft Yahei Mono （见同文件夹）
+
+	(2) 打开 ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py
+
+	(3) 在 "font.sans-serif" 里加入 "Microsoft Yahei Mono"
+
+
 命令行工具
 ---------------
 
