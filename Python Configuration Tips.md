@@ -1,46 +1,13 @@
-COMPUTER CONFIGURATION TIPS
+PYTHON CONFIGURATION TIPS
 =============================
 
-sublime text
-----------------
+## ANACONDA
 
-1. 触发package controller
+1. 下载地址：https://www.continuum.io/downloads/
 
-    (1) 按 Ctrl + ` 调出console
+-------------
 
-    (2) 粘贴以下代码到底部命令行并回车：
-        
-            # ST3
-            import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
-
-            # ST2
-            import urllib2,os;pf='Package Control.sublime-package';ipp=sublime.installed_packages_path();os.makedirs(ipp) if not os.path.exists(ipp) else None;open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read())
-
-    (3) 重启Sublime Text, Ctrl + Shift + P, install
-
-2. 必装package
-
-    (1) tomorrow
-
-    (2) [SublimeLinter](https://github.com/SublimeLinter/SublimeLinter-for-ST2) （需要先 pip install pylint）
-
-    (3) [SublimeJEDI](https://github.com/srusskih/SublimeJEDI)
-
-    (4) SublimeCodeIntel （和JEDI同时装可能有bug，只装JEDI一般就够了）
-
-3. 字体
-
-    (1) 下载安装 Microsoft Yahei Mono
-
-    (2) preference - settings-user:
-
-            "font_size": 14,
-            "font_face": "Microsoft Yahei Mono",
-    		"tab_size": 4,
-    		"translate_tabs_to_spaces": true,
-
-Jupyter Notebook
-------------------
+## JUPYTER NOTEBOOK
 
 1. 创建个性化配置文件
 
@@ -170,78 +137,114 @@ Jupyter Notebook
 
         from IPython.external import mathjax; mathjax.install_mathjax()
 
-其他Python库
----------------
-
-1. cvxopt
-	
-	(1) 下载numpy+mkl的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
-	
-	(2) 下载cvxopt的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#cvxopt
-
-	(3) 按顺序 pip install ~.whl 即可
-
-2. matplotlib和seaborn的中文显示
-
-	(1) 下载 Microsoft Yahei Mono （见同文件夹）
-
-	(2) 打开 ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py
-
-	(3) 在 "font.sans-serif" 里加入 "Microsoft Yahei Mono"
-
-
-命令行工具
----------------
-
-1. ConEmu: Powerful command line management tool
-
-    (1) https://www.fosshub.com/ConEmu.html
-
-	(2) 个性化：
-
-		settings - Main - Main console font - Microsoft Yahei Mono
-		settings - Appearance - Generic - Single instance mode (check)
-		settings - Appearance - Generic - Multiple consoles... (check)
-		settings - Tab bar - Tabs(...) - Tabs on bottom (uncheck)
-		settings - Tab bar - Tab templates (...) - Console: [%s]
-		settings - Task bar - Taskbar buttons - Show overlay icon (uncheck)
-		settings - Task bar - Taskbar buttons - Active console only (choose)
-
-2. Gow: Light version of Cygwin
-
-    (1) https://github.com/bmatzelle/gow
-
-
-Firefox
-------------
-
-1. 必装扩展
-
-    (1) FoxyProxy
-
-    (2) Adblock
-
-    (3) Stylish
-
-            #toolbar-menubar {-moz-box-ordinal-group: 1 !important;}  /*选单列 */
-            #nav-bar {-moz-box-ordinal-group: 2 !important;}  /*导航列 */
-            #PersonalToolbar {-moz-box-ordinal-group: 3 !important;}  /*书签列 */
-            #TabsToolbar {-moz-box-ordinal-group: 4 !important;}  /*分页列 */
-            #addon-bar {-moz-box-ordinal-group: 45 !important;}  /*fx28以下的附加组件栏 */
-
-Chrome
 -------------
 
-1. 必装扩展
+## CYTHON
+
+0. 参考资料：
+
+- http://cython.org/
+
+- Cython: A Guide to Python Programmers
+
+
+1. 编译器选择
+
+- 首选 Microsoft Visual Studio
+
+- 在没有的情况下，对Python2.7和3.2，可以下载 Microsoft Visual C++ Compiler for Python 2.7，网址为：http://www.microsoft.com/en-us/download/details.aspx?id=44266
+
+    安装完成后，对 ~python\Lib\distutils\msvc9compiler.py 中的 find_vcvarsall() 进行修改，注释掉原代码，改为：
+
+        def find_vcvarsall(version):
+            username = "UserName"  # 注意更改为正确的名称
+            productdir = "C:/Users/{}/AppData/Local/Programs/Common/Microsoft/Visual C++ for Python/9.0".format(username)
+            vcvarsall = os.path.join(productdir, "vcvarsall.bat")
+            if os.path.isfile(vcvarsall):
+                return vcvarsall
+            else:
+                return None
+
+- 对3.3及以上，详见：https://github.com/cython/cython/wiki/CythonExtensionsOnWindows
+
+- 对64位3.5，安装Visual C++ Build Tools 2015，网址为http://go.microsoft.com/fwlink/?LinkId=691126
+
+
+2. 编译及使用
+
+- 直接编译
     
-    (1) SwitchyOmega
+    保存到 xxx.pyx 文件里，然后同路径下构建 setup.py，内容为：
 
-    (2) ARC Welder (Android模拟器)
+        from distutils.core import setup
+        from distutils.extension import Extension
+    
+        from Cython.Build import cythonize
 
-        下载ARC Welder (https://chrome.google.com/webstore/detail/arc-welder/emfinbmielocnlhgmfkkmkngdoccbadn)
+        setup(ext_modules=cythonize('xxx.pyx'))
 
-        下载ARChon Runtime (http://archon-runtime.github.io/)， 解压
+    之后命令行运行：
 
-        在Chrome扩展程序中用开发者模式载入ARChon Runtime
+        python setup.py build_ext -i --compiler=msvc
 
-        地址栏敲入chrome://plugins/ 开启Native Client
+    编译完成后同路径下出现 xxx.pyd，即可直接如py文件一样 import
+
+- 直接 import pyx 文件
+    
+        import pyximport
+        _ = pyximport.install()
+
+    之后即可直接如py文件一样 import
+
+- jupyter notebook 直接使用Cython代码
+
+    运行：
+
+        %load_ext Cython
+
+    而后直接使用magic syntax
+
+        %%cython
+        cdef ...
+
+    运行即可在其他cell调用编译好的函数
+
+
+3. 注意事项
+
+- 运算过程中需要考虑溢出问题与变量转换问题
+
+- Cython中的"/"作用于int时为Python3中的"//"
+
+
+--------
+
+## CVXOPT
+    
+1. 下载numpy+mkl的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
+    
+2. 下载cvxopt的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#cvxopt
+
+3. 按顺序 pip install ~.whl 即可
+
+--------
+
+## MATPLOTLIB
+
+1. 下载 Microsoft Yahei Mono （见同文件夹）
+
+2. 解决matplotlib中文显示
+
+    - 打开 ~\Anaconda3\Lib\site-packages\matplotlib\rcsetup.py
+
+    - Line 868: 在 'font.sans-serif' 里加入 "Microsoft Yahei Mono"
+
+    - 此时在 jupyter notebook 中执行 %pylab inline 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft Yahei Mono"
+
+3. 解决seaborn中文显示
+
+    - 打开 ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py
+
+    - Line 192: 'font.sans-serif' 里加入 "Microsoft Yahei Mono"
+
+    - 此时在 jupyter notebook 中执行 %pylab inline 并 import seaborn 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft Yahei Mono"
