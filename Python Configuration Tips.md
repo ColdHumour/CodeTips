@@ -118,20 +118,18 @@ PYTHON CONFIGURATION TIPS
 
         新建 ~\.jupyter\custom\custom.js，添加以下代码：
 
-        define([
-            'base/js/namespace',
-            'base/js/events',
-            'codemirror/keymap/sublime'
-            ], 
-            function(IPython, events, sublime_keymap) {
-                events.on("app_initialized.NotebookApp", 
-                    function () {
-                        IPython.Cell.options_default.cm_config.lineNumbers = true;
-                        // IPython.Cell.options_default.cm_config.keyMap = 'sublime';
-                    }
-                );
+        require(
+            [
+                "codemirror/keymap/sublime",
+                "notebook/js/cell",
+                "base/js/namespace"
+            ],
+            function(sublime_keymap, cell) {
+                cell.Cell.options_default.cm_config.lineNumbers = true
+                cell.Cell.options_default.cm_config.keyMap = 'sublime';
             }
         );
+
 
 7. 安装MathJax到本地。打开命令行，运行ipython，输入
 
@@ -237,14 +235,14 @@ PYTHON CONFIGURATION TIPS
 
     - 打开 ~\Anaconda3\Lib\site-packages\matplotlib\rcsetup.py
 
-    - Line 868: 在 'font.sans-serif' 里加入 "Microsoft Yahei Mono"
+    - Line 868: 在 'font.sans-serif' 里加入 "Microsoft YaHei Mono"
 
-    - 此时在 jupyter notebook 中执行 %pylab inline 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft Yahei Mono"
+    - 此时在 jupyter notebook 中执行 %pylab inline 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
 
 3. 解决seaborn中文显示
 
     - 打开 ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py
 
-    - Line 192: 'font.sans-serif' 里加入 "Microsoft Yahei Mono"
+    - Line 192: 'font.sans-serif' 里加入 "Microsoft YaHei Mono"
 
-    - 此时在 jupyter notebook 中执行 %pylab inline 并 import seaborn 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft Yahei Mono"
+    - 此时在 jupyter notebook 中执行 %pylab inline 并 import seaborn 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
