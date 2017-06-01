@@ -75,11 +75,36 @@ Firefox
 
     (3) Stylish
 
-            #toolbar-menubar {-moz-box-ordinal-group: 1 !important;}  /*选单列 */
-            #nav-bar {-moz-box-ordinal-group: 2 !important;}  /*导航列 */
-            #PersonalToolbar {-moz-box-ordinal-group: 3 !important;}  /*书签列 */
-            #TabsToolbar {-moz-box-ordinal-group: 4 !important;}  /*分页列 */
-            #addon-bar {-moz-box-ordinal-group: 45 !important;}  /*fx28以下的附加组件栏 */
+            #main-menubar > menu {
+              -moz-box-ordinal-group: 1 !important;
+              font-size: 15px;}  /*选单列 */
+
+            #main-menubar menu menupopup * {
+              font-size: 15px;
+            }
+
+
+            #nav-bar {
+              -moz-box-ordinal-group: 2 !important;
+              font-size: 15px;
+            }  /*导航列 */
+
+            #PersonalToolbar {
+              -moz-box-ordinal-group: 3 !important;
+              font-size: 15px;
+              height: 40px;
+            }  /*书签列 */
+
+            #personal-bookmarks .bookmark-item > .toolbarbutton-icon {
+             margin-left:15px !important;
+             padding:0px !important;
+            }
+
+            #TabsToolbar {
+              -moz-box-ordinal-group: 4 !important;
+              font-size: 15px;
+              height: 40px;
+            }  /*分页列 */
 
 Chrome
 -------------
