@@ -246,3 +246,11 @@ PYTHON CONFIGURATION TIPS
     - Line 192: 'font.sans-serif' 里加入 "Microsoft YaHei Mono"
 
     - 此时在 jupyter notebook 中执行 %pylab inline 并 import seaborn 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
+
+--------
+
+## ORTOOLS
+
+1. 下载[Google Ortools](https://developers.google.com/optimization/)
+
+2. 解压, python setup.py install
