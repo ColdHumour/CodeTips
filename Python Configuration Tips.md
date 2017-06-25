@@ -5,6 +5,10 @@ PYTHON CONFIGURATION TIPS
 
 1. 下载地址：https://www.continuum.io/downloads/
 
+2. 更新所有packages
+
+        conda update --all
+
 -------------
 
 ## JUPYTER NOTEBOOK
