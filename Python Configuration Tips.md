@@ -138,6 +138,9 @@ PYTHON CONFIGURATION TIPS
                 cell.Cell.options_default.cm_config.extraKeys['Ctrl-Enter'] = function(){console.log('ctrl-enter')};
                 cell.Cell.options_default.cm_config.extraKeys['Shift-Enter'] = function(){};
 
+                // 用空格代替tab
+                cell.Cell.options_default.cm_config.extraKeys['Tab'] = function(cm){cm.replaceSelection("    " , "end");}
+
                 // 设置已存在cell的格式
                 var cells = IPython.notebook.get_cells();
                 for (var cl=0; cl<cells.length; cl++) {
@@ -146,7 +149,8 @@ PYTHON CONFIGURATION TIPS
                     cells[cl].code_mirror.setOption('extraKeys',
                         {
                             "Cmd-Enter": function(){},
-                            "Ctrl-Enter": function(){}
+                            "Ctrl-Enter": function(){},
+                            "Tab": function(cm){cm.replaceSelection("    " , "end");}
                         }
                     );            
                 }
@@ -253,7 +257,7 @@ PYTHON CONFIGURATION TIPS
 
     - 打开 ~\Anaconda3\Lib\site-packages\matplotlib\rcsetup.py
 
-    - Line 868: 在 'font.sans-serif' 里加入 "Microsoft YaHei Mono"
+    - 在 defaultParams['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
 
     - 此时在 jupyter notebook 中执行 %pylab inline 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
 
@@ -261,7 +265,7 @@ PYTHON CONFIGURATION TIPS
 
     - 打开 ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py
 
-    - Line 192: 'font.sans-serif' 里加入 "Microsoft YaHei Mono"
+    - 在 style_dict['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
 
     - 此时在 jupyter notebook 中执行 %pylab inline 并 import seaborn 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
 
