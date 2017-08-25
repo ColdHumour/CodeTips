@@ -261,6 +261,8 @@ PYTHON CONFIGURATION TIPS
 
     - 此时在 jupyter notebook 中执行 %pylab inline 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
 
+    - 检查 C:\~\<username>\.matplotlib，如有fontList.py3k.cache文件，删除，并重新启动jupyter notebook
+
 3. 解决seaborn中文显示
 
     - 打开 ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py
