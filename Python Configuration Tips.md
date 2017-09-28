@@ -38,6 +38,8 @@ PYTHON CONFIGURATION TIPS
         c.NotebookApp.notebook_dir = u'F:\\lab\\'     # 工作路径
         c.FileContentsManager.root_dir = u'F:\\lab\\ipython'    # Notebook存储路径
 
+        # 注：如果Notebook存储路径中有与工作路径下同名的文件夹（大小写不敏感），则会自动切换工作路径
+
 5. 更改notebook样式
 
         新建 ~\.jupyter\custom\custom.css，挑选src文件下合适主题，将代码复制过去
