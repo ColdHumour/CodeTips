@@ -36,8 +36,8 @@ Sublime Text
 
             "font_size": 14,
             "font_face": "Microsoft Yahei Mono",
-    		"tab_size": 4,
-    		"translate_tabs_to_spaces": true,
+            "tab_size": 4,
+            "translate_tabs_to_spaces": true,
             "word_wrap": true,
             "word_wrap_column": 100,
 
@@ -49,15 +49,15 @@ Sublime Text
 
     (1) https://www.fosshub.com/ConEmu.html
 
-	(2) 个性化：
+    (2) 个性化：
 
-		settings - Main - Main console font - Microsoft Yahei Mono
-		settings - Appearance - Generic - Single instance mode (check)
-		settings - Appearance - Generic - Multiple consoles... (check)
-		settings - Tab bar - Tabs(...) - Tabs on bottom (uncheck)
-		settings - Tab bar - Tab templates (...) - Console: [%s]
-		settings - Task bar - Taskbar buttons - Show overlay icon (uncheck)
-		settings - Task bar - Taskbar buttons - Active console only (choose)
+            settings - Main - Main console font - Microsoft Yahei Mono
+            settings - Appearance - Generic - Single instance mode (check)
+            settings - Appearance - Generic - Multiple consoles... (check)
+            settings - Tab bar - Tabs(...) - Tabs on bottom (uncheck)
+            settings - Tab bar - Tab templates (...) - Console: [%s]
+            settings - Task bar - Taskbar buttons - Show overlay icon (uncheck)
+            settings - Task bar - Taskbar buttons - Active console only (choose)
 
 2. Gow: Light version of Cygwin
 
@@ -75,35 +75,48 @@ Firefox
 
     (3) Stylish
 
+            
+
+2. 经典界面还原
+
+    (1) open profile folder
+
+        about:support > Profile Folder > Open Folder
+
+        Shift+F2 to open Firefox's command line, then enter the command: **folder openprofile**
+
+    (2) create folder: chrome
+
+    (3) create file: userChrome.css
+
             #main-menubar > menu {
               -moz-box-ordinal-group: 1 !important;
-              font-size: 15px;}  /*选单列 */
+              font-size: 13px;}  /*选单列 */
 
             #main-menubar menu menupopup * {
-              font-size: 15px;
+              font-size: 13px;
             }
-
 
             #nav-bar {
               -moz-box-ordinal-group: 2 !important;
-              font-size: 15px;
+              font-size: 13px;
             }  /*导航列 */
 
             #PersonalToolbar {
               -moz-box-ordinal-group: 3 !important;
-              font-size: 15px;
-              height: 40px;
+              font-size: 13px;
+              height: 30px;
             }  /*书签列 */
 
             #personal-bookmarks .bookmark-item > .toolbarbutton-icon {
-             margin-left:15px !important;
-             padding:0px !important;
+             margin-left: 10px !important;
+             padding: 0px !important;
             }
 
             #TabsToolbar {
               -moz-box-ordinal-group: 4 !important;
-              font-size: 15px;
-              height: 40px;
+              font-size: 13px;
+              height: 30px;
             }  /*分页列 */
 
 Chrome
