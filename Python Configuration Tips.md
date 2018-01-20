@@ -3,11 +3,25 @@ PYTHON CONFIGURATION TIPS
 
 ## ANACONDA
 
-1. 下载地址：https://www.continuum.io/downloads/
+1. 下载地址：https://www.anaconda.com/download/
 
 2. 更新所有packages
 
         conda update --all
+
+    如果遇到 ipykernel 也要更新的情况下可能会报错，这时先
+
+        conda update ipykernel
+
+    再 -all 即可
+
+3. 目前安装的 Anaconda 默认 Python 3.6，如果要 3.5 或其他版本，则通过配置环境的形式来进行，参见 [Managing Python](https://conda.io/docs/user-guide/tasks/manage-python.html)
+
+4. 清理过期的pkgs
+
+        conda clean -t  # 清除tar包
+
+        conda clean -p  # 清除包
 
 -------------
 
@@ -76,9 +90,9 @@ PYTHON CONFIGURATION TIPS
             else:
                 return None
 
-- 对3.3及以上，详见：https://github.com/cython/cython/wiki/CythonExtensionsOnWindows
+- 对3.3及以上，详见：[cython wiki](https://github.com/cython/cython/wiki/CythonExtensionsOnWindows)
 
-- 对64位3.5，安装Visual C++ Build Tools 2015，网址为http://go.microsoft.com/fwlink/?LinkId=691126
+- 对64位3.5与3.6，安装[Visual C++ Build Tools 2015](http://go.microsoft.com/fwlink/?LinkId=691126)
 
 
 2. 编译及使用
@@ -127,16 +141,29 @@ PYTHON CONFIGURATION TIPS
 
 - Cython中的"/"作用于int时为Python3中的"//"
 
-
 --------
 
 ## CVXOPT
-    
-1. 下载numpy+mkl的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy
-    
-2. 下载cvxopt的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#cvxopt
 
-3. 按顺序 pip install ~.whl 即可
+1. 下载cvxopt的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#cvxopt
+
+2. 如果 pip install <cvxopt.whl> 出错，则先安装 [numpy+mkl](http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy)
+
+--------
+
+## ORTOOLS
+
+1. 下载[Google Ortools](https://developers.google.com/optimization/)
+
+2. 解压, python setup.py install
+
+--------
+
+## gmpy2
+
+1. 下载[gmpy2](https://github.com/aleaxit/gmpy/releases)
+
+2. pip install ~.whl
 
 --------
 
@@ -146,7 +173,11 @@ PYTHON CONFIGURATION TIPS
 
 2. 解决matplotlib中文显示
 
-    - 打开 ~\Anaconda3\Lib\site-packages\matplotlib\rcsetup.py
+    - 打开：
+
+            ~\Anaconda3\pkgs\<matplotlib>\Lib\site-packages\matplotlib\rcsetup.py (Anaconda 5+)
+
+            ~\Anaconda3\Lib\site-packages\matplotlib\rcsetup.py (lower version)
 
     - 在 defaultParams['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
 
@@ -156,16 +187,12 @@ PYTHON CONFIGURATION TIPS
 
 3. 解决seaborn中文显示
 
-    - 打开 ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py
+    - 打开：
+
+            ~\Anaconda3\pkgs\<seaborn>\Lib\site-packages\seaborn\rcmod.py (Anaconda 5+)
+
+            ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py (lower version)
 
     - 在 style_dict['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
 
     - 此时在 jupyter notebook 中执行 %pylab inline 并 import seaborn 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
-
---------
-
-## ORTOOLS
-
-1. 下载[Google Ortools](https://developers.google.com/optimization/)
-
-2. 解压, python setup.py install
