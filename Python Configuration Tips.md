@@ -196,3 +196,11 @@ PYTHON CONFIGURATION TIPS
     - 在 style_dict['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
 
     - 此时在 jupyter notebook 中执行 %pylab inline 并 import seaborn 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
+
+--------
+
+## OTHER PKGS
+
+- pip install selenium
+
+- pip install termcolor
