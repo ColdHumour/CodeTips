@@ -34,6 +34,15 @@ Sublime Text
 
     (2) SublimeLinter-pycodestyle （需要先 pip install pylint）
 
+        - ignore line too long:
+
+            Preference - Package Settings - SublimeLinter - Settings
+
+            "linters": {
+                "pycodestyle": {
+                    "ignore": ["E501"]
+                }
+
     (3) Jedi - Python autocompletion
 
     (4) SideBarEnhancement
