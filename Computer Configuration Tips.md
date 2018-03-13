@@ -42,6 +42,7 @@ Sublime Text
                 "pycodestyle": {
                     "ignore": ["E501"]
                 }
+            }
 
     (3) Jedi - Python autocompletion
 
@@ -82,6 +83,8 @@ Sublime Text
             "word_wrap": true,
             "word_wrap_column": 100
 
+---
+
 命令行工具
 ---------------
 
@@ -107,6 +110,7 @@ Sublime Text
 
     (1) https://github.com/bmatzelle/gow
 
+---
 
 Firefox
 ------------
@@ -159,19 +163,11 @@ Firefox
               height: 30px;
             }  /*分页列 */
 
-Chrome
+---
+
+SQL
 -------------
 
-1. 必装扩展
+1. Navicat
     
-    (1) SwitchyOmega
-
-    (2) ARC Welder (Android模拟器)
-
-        下载ARC Welder (https://chrome.google.com/webstore/detail/arc-welder/emfinbmielocnlhgmfkkmkngdoccbadn)
-
-        下载ARChon Runtime (http://archon-runtime.github.io/)， 解压
-
-        在Chrome扩展程序中用开发者模式载入ARChon Runtime
-
-        地址栏敲入chrome://plugins/ 开启Native Client
+    (1) https://navicat.com/en
