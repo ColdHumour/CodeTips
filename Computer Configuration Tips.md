@@ -163,6 +163,15 @@ Firefox
               height: 30px;
             }  /*分页列 */
 
+
+3. 多实例同时运行
+
+    "~/firefox.exe" -no-remote -ProfileManager
+
+    create new profile
+
+    "~/firefox.exe" -no-remote -P <new profile name>
+
 ---
 
 SQL
