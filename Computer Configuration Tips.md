@@ -1,6 +1,24 @@
 COMPUTER CONFIGURATION TIPS
 =============================
 
+GitHub Desktop
+----------------
+
+1. 下载
+
+    https://desktop.github.com/
+
+2. 使用代理
+
+    open ~/<user>/.gitconfig
+
+    add following codes:
+
+        [http]
+            proxy = http://<url>:<port>
+        [https]
+            proxy = http://<url>:<port>
+
 Sublime Text
 ----------------
 
