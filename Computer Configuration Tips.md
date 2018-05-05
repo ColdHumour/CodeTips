@@ -4,7 +4,7 @@ COMPUTER CONFIGURATION TIPS
 Git GUI For Windows
 ---------------------
 
-两款工具任选一款即可，推荐 GitKraken，因可同时支持 GitHub 和 BitBucket，且可直接打开本地已 clone 好的 repository
+GitKraken 和 GitHub Desktop 二选一即可，推荐 GitKraken，因可同时支持 GitHub 和 BitBucket，且可直接打开本地已 clone 的 repository
 
 1. GitKraken
 
@@ -22,16 +22,16 @@ Git GUI For Windows
 
     - https://desktop.github.com/
 
-    - 使用代理
+3. 代理设置
 
-        open ~/<user>/.gitconfig
+    - open ~/<user>/.gitconfig
 
-        add following codes:
+    - add following codes:
 
-            [http]
-                proxy = http://<url>:<port>
-            [https]
-                proxy = http://<url>:<port>
+        [http]
+            proxy = http://<url>:<port>
+        [https]
+            proxy = https://<url>:<port>
 
 ---
 
