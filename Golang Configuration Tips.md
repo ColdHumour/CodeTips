@@ -10,15 +10,8 @@ GO TIPS
 
 3. 通过 go run test.go 命令行运行
 
-4. Build System on Sublime text - Go
+4. sublime text 3 插件
 
-    (1) Tools - build system - new build system
+    - golang build
 
-            {
-                "shell_cmd": "go run $file",
-                # "cmd": ["go", "run", "$file"],
-                "selector": "source.go",
-                "file_regex": "^\\s*File \"(...*?)\", line ([0-9]*)"
-            }
-
-    (2) save as "Go.sublime-build"
+    - golang tools
