@@ -94,7 +94,7 @@ Sublime Text
 
     (1) SublimeCodeIntel （和JEDI同时装可能有bug，只装JEDI一般就够了）
 
-3. 常用配置
+4. 常用配置
 
     (1) 下载安装 Microsoft Yahei Mono
 
@@ -116,6 +116,18 @@ Sublime Text
             "translate_tabs_to_spaces": true,
             "word_wrap": true,
             "word_wrap_column": 100
+
+5. Windows 命令行开启方法
+
+    (1) 将 ~/sublime test 3/subl.exe 复制到 ~/windows/system32 下
+
+    (2) 在命令行下运行以下命令可直接打开
+
+            subl <文件或文件夹路径>
+
+    (3) 其他选项见
+
+            subl --help
 
 ---
 
