@@ -207,7 +207,7 @@ PYTHON CONFIGURATION TIPS
 
 - jupyter notebook autoreload 报错处理：
 
-        # ~anaconda/Lib/importlib/__init__.py 中 relaod() 函数
+        # ~anaconda/Lib/importlib/__init__.py 中 reload() 函数
         # 加入一句判断，即最后一个 try 模块的末尾改成这样：
 
         spec = module.__spec__ = _bootstrap._find_spec(name, pkgpath, target)
