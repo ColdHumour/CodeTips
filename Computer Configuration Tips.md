@@ -169,6 +169,8 @@ Firefox
 
 2. 经典界面还原
 
+    参考资料：https://github.com/Aris-t2/CustomCSSforFx
+
     (1) open profile folder
 
         about:support > Profile Folder > Open Folder
@@ -195,7 +197,7 @@ Firefox
             #PersonalToolbar {
               -moz-box-ordinal-group: 3 !important;
               font-size: 13px;
-              height: 30px;
+              height: 35px;
             }  /*书签列 */
 
             #personal-bookmarks .bookmark-item > .toolbarbutton-icon {
@@ -209,6 +211,46 @@ Firefox
               height: 30px;
             }  /*分页列 */
 
+            #main-window:not([chromehidden*="toolbar"]) #navigator-toolbox {
+              padding-bottom: 35px !important;
+            }
+
+            #TabsToolbar {
+              position: absolute !important;
+              bottom: 5px !important;
+              width: 100vw !important;
+            }
+
+            #tabbrowser-tabs {
+              width: 120vw !important;
+            }
+
+            /* hide line above navigation toolbar appearing in some cases */
+            #main-window:not([tabsintitlebar]) #nav-bar,
+            #main-window:not([tabsintitlebar]) #navigator-toolbox {
+              border-top: 0 !important;
+              box-shadow: unset !important;
+            }
+
+            /* disable Mozillas tab jumping nonsense when moving tabs */
+            #navigator-toolbox[movingtab] > #titlebar > #TabsToolbar {
+              padding-bottom: unset !important;
+            }
+            #navigator-toolbox[movingtab] #tabbrowser-tabs {
+              padding-bottom: unset !important;
+              margin-bottom: unset !important;
+            }
+            #navigator-toolbox[movingtab] > #nav-bar {
+              margin-top: unset !important;
+            }
+
+            /* size of new tab tabs '+' icon */
+            .tabs-newtab-button .toolbarbutton-icon {
+              padding: 0px !important;
+              margin: 0px !important;
+              width: 15px !important;
+              height: 15px !important;
+            }
 
 3. 多实例同时运行
 
