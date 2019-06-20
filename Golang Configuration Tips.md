@@ -15,3 +15,12 @@ GO TIPS
     - golang build
 
     - golang tools
+
+    - 安装完后进入 Preferences | Package Settings | Golang Config | Settings - User，添加
+
+            {
+                "PATH": "~/go/bin",
+                "GOPATH": "~/go"
+            }
+
+    - 之后 Ctrl + B 即可编译运行

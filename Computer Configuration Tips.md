@@ -62,6 +62,11 @@ Sublime Text
 
     - 安装完成后重启Sublime Text, Ctrl + Shift + P, install
 
+    - 如需设置代理，进入 Preferences | Package Settings | Package Control | Settings - User，添加
+
+            "http_proxy": "http://localhost:8888",
+            "https_proxy": "http://localhost:8888"
+
 2. 必装package
 
     (1) tomorrow
