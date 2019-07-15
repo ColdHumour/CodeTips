@@ -71,15 +71,18 @@ Sublime Text
 
     (1) tomorrow
 
-    (2) SublimeLinter-pycodestyle （需要先 pip install pylint）
+    (2) SublimeLinter & SublimeLinter-pylint （需要先 pip install pylint）
 
-        - ignore line too long:
+        - disable specific messages:
 
             Preference - Package Settings - SublimeLinter - Settings
 
-            "linters": {
-                "pycodestyle": {
-                    "ignore": ["E501"]
+            {
+                "lint_mode": "manual",
+                "linters": {
+                    "pylint": {
+                        "args": ["--disable=R0913,R0914,C0301"]
+                    }
                 }
             }
 
