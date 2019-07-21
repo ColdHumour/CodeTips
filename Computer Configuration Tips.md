@@ -71,7 +71,7 @@ Sublime Text
 
     (1) tomorrow
 
-    (2) SublimeLinter & SublimeLinter-pylint （需要先 pip install pylint）
+    (2) SublimeLinter & SublimeLinter-pycodestyle （需要先 pip install pylint）
 
         - disable specific messages:
 
@@ -80,8 +80,8 @@ Sublime Text
             {
                 "lint_mode": "manual",
                 "linters": {
-                    "pylint": {
-                        "args": ["--disable=R0913,R0914,C0301"]
+                    "pycodestyle": {
+                         "ignore": ["E501"]
                     }
                 }
             }
