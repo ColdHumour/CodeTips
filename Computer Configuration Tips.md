@@ -71,7 +71,7 @@ Sublime Text
 
     (1) tomorrow
 
-    (2) SublimeLinter & SublimeLinter-pylint （需要先 pip install pylint）
+    (2) SublimeLinter & SublimeLinter-pycodestyle （需要先 pip install pylint）
 
         - disable specific messages:
 
