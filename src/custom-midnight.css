@@ -20,6 +20,10 @@ div.input_area {
     background: rbga(0, 0, 0, 0.5);
 }
 
+div.run_this_cell {
+    display: none;
+}
+
 /* GLOBALS */
 
 @media not print { body { background-color: #eee; } }

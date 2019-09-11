@@ -80,6 +80,9 @@ Sublime Text
             {
                 "lint_mode": "manual",
                 "linters": {
+                    "pycodestyle": {
+                        "ignore": ["E501"]
+                    },
                     "pylint": {
                         "args": ["--disable=R0913,R0914,C0301"]
                     }
