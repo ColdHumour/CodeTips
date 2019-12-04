@@ -217,6 +217,7 @@ Firefox
             }
 
             #TabsToolbar {
+              display: block;
               -moz-box-ordinal-group: 4 !important;
               font-size: 13px;
               height: 30px;
