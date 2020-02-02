@@ -15,13 +15,23 @@ PYTHON CONFIGURATION TIPS
 
     再 -all 即可
 
-3. 目前安装的 Anaconda 默认 Python 3.6，如果要 3.5 或其他版本，则通过配置环境的形式来进行，参见 [Managing Python](https://conda.io/docs/user-guide/tasks/manage-python.html)
+3. 升级 python
+
+        conda install -c anaconda python=X.X
+
+    （将 X.X 换成所需版本），之后运行
+
+        conda update --all
+
+3. 如果需要非 Anaconda 默认版本的其他环境，如更低或更高的版本，可以通过配置环境的形式来进行，参见 [Managing Python](https://conda.io/docs/user-guide/tasks/manage-python.html)
 
 4. 清理过期的pkgs
 
-        conda clean -t  # 清除tar包
+        conda clean -t  # 清除 tar 包
 
-        conda clean -p  # 清除包
+        conda clean -p  # 清除 module 包
+
+        conda clean -a  # 清除 tar 包和 module 包
 
 -------------
 
@@ -35,9 +45,9 @@ PYTHON CONFIGURATION TIPS
 
         jupyter kernelspec list
 
-        打开输出的路径，如果有kernel.json文件，则更改argv里的python.exe的路径到正确路径
+        打开输出的路径，如果有 kernel.json 文件，则更改 argv 里的 python.exe 的路径到正确路径
 
-        一般为~\Anaconda\python.exe
+        一般为 ~\Anaconda\python.exe
 
 3. Windows下，打开
     
@@ -47,20 +57,20 @@ PYTHON CONFIGURATION TIPS
 
         C:\users\<username>\.jupyter\jupyter_notebook_config.py
 
-4. Jupyter 4.1
+4. Jupyter 4.1 以上
 
         c.NotebookApp.notebook_dir = u'F:\\lab\\'     # 工作路径
         c.FileContentsManager.root_dir = u'F:\\lab\\ipython'    # Notebook存储路径
 
         # 注：如果Notebook存储路径中有与工作路径下同名的文件夹（大小写不敏感），则会自动切换工作路径
 
-5. 更改notebook样式
+5. 更改 notebook 样式
 
-        新建 ~\.jupyter\custom\custom.css，挑选src文件下合适主题，将代码复制过去
+        新建 ~\.jupyter\custom\custom.css，挑选 src 文件下合适主题，将代码复制过去
 
 6. 默认显示行号和使用SublimeText的快捷键
 
-        新建 ~\.jupyter\custom\custom.js，将src/custom.js的代码复制过去
+        新建 ~\.jupyter\custom\custom.js，将 src/custom.js 的代码复制过去
 
 --------
 
@@ -110,7 +120,7 @@ PYTHON CONFIGURATION TIPS
 
     - 打开：
 
-            ~\Anaconda3\pkgs\<seaborn>\Lib\site-packages\seaborn\rcmod.py (Anaconda 5+)
+            ~\Anaconda3\pkgs\<seaborn>\site-packages\seaborn\rcmod.py (Anaconda 5+)
 
             ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py (lower version)
 
