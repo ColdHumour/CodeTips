@@ -59,4 +59,3 @@ JULIA CONFIGURATION TIPS
     Atom 中打开 Install 面板（Ctrl + ,），搜索 "uber-juno"，安装。
 
     打开 Packages > Juno > Settings，添加路径 ~\Julia-X.X.X\bin\julia.exe
-
