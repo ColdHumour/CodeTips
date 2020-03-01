@@ -1,21 +1,23 @@
 VPS CONFIGURATION TIPS
 =============================
 
-# **基本Linux操作**
+## **基本Linux操作**
 
 一般选择 Ubuntu 18.04
 
-        > passwd
-
-        > apt-get update
-        > apt-get upgrade
-        > apt install net-tools
-
-        > ifconfig
+    > passwd
+    
+    > apt-get update
+    > apt-get upgrade
+    > apt install net-tools
+    
+    > ifconfig
 
 ---
 
-# **常用工具**
+
+
+## **常用工具**
 
 - [IPCheck](http://ip100.info/check)
 
@@ -23,9 +25,11 @@ VPS CONFIGURATION TIPS
 
 ---
 
-# **V2RAY**
 
-## 参考资料
+
+## V2RAY
+
+### 参考资料
 
 - https://guide.v2fly.org/
 
@@ -39,48 +43,48 @@ VPS CONFIGURATION TIPS
 
 - https://www.4spaces.org/v2ray-nginx-tls-websocket/
 
-## Server 端
+### Server 端
 
-        > bash <(curl -L -s https://install.direct/go.sh)
+    > bash <(curl -L -s https://install.direct/go.sh)
 
 之后可以
 
-        > cat /etc/v2ray/config.json
+    > cat /etc/v2ray/config.json
 
 查看配置文件，或者
 
-        > nano /etc/v2ray/config.json
+    > nano /etc/v2ray/config.json
 
 有需要可以修改 "port", "Id" 和 "alterId" 字段，之后配置启动
 
-        > systemctl enable v2ray
-        > systemctl start v2ray
+    > systemctl enable v2ray
+    > systemctl start v2ray
 
 或者
 
-        > service v2ray start
+    > service v2ray start
 
 可以使用
 
-        > service v2ray start|stop|status|reload|restart|force-reload
+    > service v2ray start|stop|status|reload|restart|force-reload
 
 执行相应指令
 
-## Windows 端
+### Windows 端
 
 下载并解压 [v2rayN](https://github.com/2dust/v2rayN/releases)
 
 配置
 
-    服务器 -> 添加[Vmess]服务器 -> 填写 地址/端口/ID/AlterID
+- 服务器 -> 添加[Vmess]服务器 -> 填写 地址/端口/ID/AlterID
 
-    参数设置 -> PAC模式/直连模式
+- 参数设置 -> PAC模式/直连模式
 
 PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 FoxyProxy
 
 及时检查更新 v2rayN/v2rayCore/PAC，PAC更新需要在PAC模式下运行
 
-## Android 端
+### Android 端
 
 下载并安装 [BifrostV](https://apkpure.com/bifrostv/com.github.dawndiy.bifrostv)
 
@@ -90,9 +94,11 @@ PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 
 
 ---
 
-# **SSCLOAK**
 
-## 参考资料
+
+## SSCLOAK
+
+### 参考资料
 
 - https://github.com/cbeuw/Cloak
 
@@ -100,7 +106,7 @@ PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 
 
 - https://github.com/HirbodBehnam/Shadowsocks-Cloak-Installer
 
-## Server 端
+### Server 端
 
 (1) 安装 git
 
@@ -113,32 +119,32 @@ PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 
 (3) 运行脚本
 
     > bash Shadowsocks-Cloak-Installer/Shadowsocks-Cloak-Installer.sh
-
+    
     > cat /etc/shadowsocks-libev/ckclient.json
-
+    
     > cat /etc/shadowsocks-libev/config.json
 
 如有需要可以自行修改 config.json 中的必要字段，之后配置启动
 
     > nohup ss-server -c /etc/shadowsocks-libev/config.json &
-
+    
     > jobs -l
-
+    
     > kill -9 ####
 
-## Windows 端
+### Windows 端
 
 下载并解压 [SSWin](https://github.com/shadowsocks/shadowsocks-windows/releases) 和 [ck-client-windows](https://github.com/cbeuw/Cloak/releases)
 
 配置
 
-    创建 ckclient.json 并使用与 Server 端相同的配置，核心是 UID 和 PublicKey
+- 创建 ckclient.json 并使用与 Server 端相同的配置，核心是 UID 和 PublicKey
+  
+- 服务器 -> 编辑服务器 -> 填写 地址/端口/密码/加密/插件程序/插件选项
+  
+- 参数设置 -> PAC模式，需通过浏览器设置代理，如 FoxyProxy
 
-    服务器 -> 编辑服务器 -> 填写 地址/端口/密码/加密/插件程序/插件选项
-
-    参数设置 -> PAC模式，需通过浏览器设置代理，如 FoxyProxy
-
-## Android 端
+### Android 端
 
 下载并安装 [SSAndroid](https://github.com/shadowsocks/shadowsocks-android/releases) 和 [Cloak-Android](https://github.com/cbeuw/Cloak-android/releases)
 
@@ -147,3 +153,4 @@ PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 
 推荐仅对部分应用启用 SSCloak
 
 ---
+

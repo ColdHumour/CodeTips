@@ -1,29 +1,30 @@
 CYTHON TIPS
 ===============
 
-0. 参考资料
+
+
+## 0. 参考资料
 
 - http://cython.org/
-
 - Cython: A Guide to Python Programmers
 
----
 
-1. 编译器选择
 
-(1) 64位 Python 3.5 及以上
+## 1. 编译器选择
+
+### (1) 64位 Python 3.5 及以上
 
 直接安装[Visual C++ Build Tools 2015](http://go.microsoft.com/fwlink/?LinkId=691126)
 
-(2) 32位 Python 3.3 及以上
+### (2) 32位 Python 3.3 及以上
 
 详见 [cython wiki](https://github.com/cython/cython/wiki/CythonExtensionsOnWindows)
 
----
 
-2. 编译及使用
 
-(1) 文件结构
+## 2. 编译及使用
+
+### (1) 文件结构
 
 代码保存到 xxx.pyx 文件里，并创建同名 .pxd 文件备用。如果有函数是 cdef 的，则需要在 pxd 文件中声明函数名称才能被其他文件访问到。例如
 
@@ -69,7 +70,7 @@ from a import c_gcd_int64
 # distutils: language = c++
 ```
 
-(2) 编译
+### (2) 编译
 
 在 pyx 和 pxd 同路径下构建 setup.py，内容示例为
 
@@ -102,11 +103,13 @@ setup(
 
 之后命令行运行：
 
-    python setup.py build_ext -i --compiler=msvc
+```shell
+> python setup.py build_ext -i --compiler=msvc
+```
 
 编译完成后同路径下会出现 xxx.c, xxx.h, xxx.cpp 等编译中间文件，最终结果为 xxx.pyd，完成后即可直接 import 或 cimport （视 pxd 配置确定）
 
-(3) jupyter notebook 直接使用Cython代码
+### (3) jupyter notebook 直接使用Cython代码
 
 运行：
 
@@ -126,9 +129,9 @@ cell 中可以 cimport 需要的库如 libc, libcpp, 以及自己写的编译好
 
 ---
 
-3. 各种 TIPS
+#### 3. 各种 TIPS
 
-(1) 常见数据类型与 numpy 对应
+**(1) 常见数据类型与 numpy 对应**
 
 |cython|numpy|
 |:-:|:-:|
@@ -155,7 +158,7 @@ from libcpp cimport bool
 
 可以大幅降低数据结构的空间占用，在 prime sieve 类型算法中很好用
 
-(2) numpy
+**(2) numpy**
 
 需要显式导入两遍
 
@@ -175,7 +178,7 @@ cdef arr[long, ndim=2] get_matrix(long N):
     ...
 ```
 
-(2) 多返回值
+**(2) 多返回值**
 
 在 jupyter notebook 环境中，c++ 类型的代码可以支持 tuple of int 之类的数据结构，但是本地 pyx 和 pxd 编译通过不了
 
@@ -200,7 +203,7 @@ cdef desc info
 info = desc(4, 2, 0)
 ```
 
-(3) 函数
+**(3) 函数**
 
 cdef 的函数是仅限 cython 环境调用的，例如在 jupyter notebook 中声明的 cdef 函数并不能在其他 cell 里调用。但是 cython 的 def 中可以调用 cdef，只要返回时保证没有无法转换的数据类型就可以。例如可以返回 long, tuple, list, np.ndarray，但不能返回 vector, map, deque 或者 struct 等
 
@@ -226,7 +229,7 @@ def long mask_f():
 
 实际运行效果与 python 中传 dict 或 list 作为引用的情况一样，会实时地修改内存地址中该数据结构的内容。这样效率会高很多。
 
-(4) 数据结构
+**(4) 数据结构**
 
 - libcpp.pair 可以直接仿照 struct 初始化
 

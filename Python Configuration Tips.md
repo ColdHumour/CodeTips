@@ -1,6 +1,8 @@
 PYTHON CONFIGURATION TIPS
 =============================
 
+
+
 ## ANACONDA
 
 1. 下载地址：https://www.anaconda.com/download/
@@ -13,7 +15,7 @@ PYTHON CONFIGURATION TIPS
 
         conda update ipykernel
 
-    再 -all 即可
+    再 --all 即可
 
 3. 升级 python
 
@@ -28,12 +30,14 @@ PYTHON CONFIGURATION TIPS
 4. 清理过期的pkgs
 
         conda clean -t  # 清除 tar 包
-
+    
         conda clean -p  # 清除 module 包
-
+    
         conda clean -a  # 清除 tar 包和 module 包
 
 -------------
+
+
 
 ## JUPYTER NOTEBOOK
 
@@ -44,24 +48,24 @@ PYTHON CONFIGURATION TIPS
 2. 确认kernel路径
 
         jupyter kernelspec list
-
+    
         打开输出的路径，如果有 kernel.json 文件，则更改 argv 里的 python.exe 的路径到正确路径
-
+    
         一般为 ~\Anaconda\python.exe
 
 3. Windows下，打开
-    
+   
         C:\Documents and Settings\<username>\.jupyter\jupyter_notebook_config.py
-
+    
         或者
-
+    
         C:\users\<username>\.jupyter\jupyter_notebook_config.py
 
 4. Jupyter 4.1 以上
 
         c.NotebookApp.notebook_dir = u'F:\\lab\\'     # 工作路径
         c.FileContentsManager.root_dir = u'F:\\lab\\notebooks'    # Notebook存储路径
-
+    
         # 注：如果Notebook存储路径中有与工作路径下同名的文件夹（大小写不敏感），则会自动切换工作路径
 
 5. 更改 notebook 样式
@@ -74,6 +78,8 @@ PYTHON CONFIGURATION TIPS
 
 --------
 
+
+
 ## CVXOPT
 
 1. 下载cvxopt的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#cvxopt
@@ -81,6 +87,8 @@ PYTHON CONFIGURATION TIPS
 2. 如果 pip install <cvxopt.whl> 出错，则先安装 [numpy+mkl](http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy)
 
 --------
+
+
 
 ## ORTOOLS
 
@@ -90,6 +98,8 @@ PYTHON CONFIGURATION TIPS
 
 --------
 
+
+
 ## gmpy2
 
 1. 下载[gmpy2](https://github.com/aleaxit/gmpy/releases)
@@ -97,6 +107,8 @@ PYTHON CONFIGURATION TIPS
 2. pip install ~.whl
 
 --------
+
+
 
 ## MATPLOTLIB
 
@@ -107,7 +119,7 @@ PYTHON CONFIGURATION TIPS
     - 打开：
 
             ~\Anaconda3\pkgs\<matplotlib>\Lib\site-packages\matplotlib\rcsetup.py (Anaconda 5+)
-
+    
             ~\Anaconda3\Lib\site-packages\matplotlib\rcsetup.py (lower version)
 
     - 在 defaultParams['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
@@ -121,7 +133,7 @@ PYTHON CONFIGURATION TIPS
     - 打开：
 
             ~\Anaconda3\pkgs\<seaborn>\site-packages\seaborn\rcmod.py (Anaconda 5+)
-
+    
             ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py (lower version)
 
     - 在 style_dict['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
@@ -129,6 +141,8 @@ PYTHON CONFIGURATION TIPS
     - 此时在 jupyter notebook 中执行 %pylab inline 并 import seaborn 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
 
 --------
+
+
 
 ## OTHER PKGS
 
@@ -140,7 +154,7 @@ PYTHON CONFIGURATION TIPS
 
         # ~anaconda/Lib/importlib/__init__.py 中 reload() 函数
         # 加入一句判断，即最后一个 try 模块的末尾改成这样：
-
+    
         spec = module.__spec__ = _bootstrap._find_spec(name, pkgpath, target)
         if spec:
             _bootstrap._exec(spec, module)

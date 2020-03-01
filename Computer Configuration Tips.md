@@ -1,282 +1,241 @@
 COMPUTER CONFIGURATION TIPS
 =============================
 
-Git GUI For Windows
----------------------
 
-GitKraken 和 GitHub Desktop 二选一即可，推荐 GitKraken，因可同时支持 GitHub 和 BitBucket，且可直接打开本地已 clone 的 repository
 
-1. GitKraken
+## Git
 
-    - 下载：https://www.gitkraken.com/
+### Git For Windows
 
-    - 安装完成后使用 GitHub 登录
+- 下载并安装：https://gitforwindows.org/index.html
 
-    - Preference - Authentication - Bitbucket.org 连接
+### GitKraken
 
-    - clone/open repository
+- 下载并安装：https://www.gitkraken.com/
+- 登录
+- Preference - Authentication - 连接 Github 与 Bitbucket
+- clone/open repository
+- stage & commit & push
 
-    - stage & commit & push
+### Git 代理设置
 
-2. GitHub Desktop
+open `~/<user>/.gitconfig` and add following codes
 
-    - https://desktop.github.com/
-
-3. 代理设置
-
-    - open ~/<user>/.gitconfig
-
-    - add following codes:
-
-        [http]
-            proxy = http://<url>:<port>
-        [https]
-            proxy = https://<url>:<port>
+```
+[http]
+    proxy = http://localhost:<port>
+[https]
+    proxy = https://localhost:<port>
+```
 
 ---
 
-Sublime Text
-----------------
 
-1. 触发 package controller
 
-    - 方法一（初次安装时）：
+## 命令行工具
 
-        点击
+### ConEmu
 
-            Tools - Install Package Controller
+- 下载并安装：https://conemu.github.io/
+- 个性化：
+    - settings - Main - Main console font - Microsoft Yahei Mono
+    - settings - Appearance - Generic - Single instance mode (check)
+    - settings - Appearance - Generic - Multiple consoles... (check)
+    - settings - Tab bar - Tabs(...) - Tabs on bottom (uncheck)
+    - settings - Tab bar - Tab templates (...) - Console: [%s]
+    - settings - Task bar - Taskbar buttons - Show overlay icon (uncheck)
+    - settings - Task bar - Taskbar buttons - Active console only (choose)
 
-        安装完成后该选项会消失
+- 默认用 ConEmu 打开 .bat 或 .cmd
+    - settings - Integration - Default term - Force ConEmu as default terminal for console applications (check)
 
-    - 方法二：
+### GOW
 
-        (1) View - Show Console 或者按 Ctrl + ` 调出console
-
-        (2) 粘贴以下代码到底部命令行并回车：
-        
-            # ST3
-            import urllib.request,os; pf = 'Package Control.sublime-package';
-            ipp = sublime.installed_packages_path();
-            urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));
-            open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen('http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
-
-    - 安装完成后重启Sublime Text, Ctrl + Shift + P, install
-
-    - 如需设置代理，进入 Preferences | Package Settings | Package Control | Settings - User，添加
-
-            "http_proxy": "http://localhost:8888",
-            "https_proxy": "http://localhost:8888"
-
-2. 必装package
-
-    (1) tomorrow
-
-    (2) SublimeLinter & SublimeLinter-pycodestyle （需要先 pip install pylint）
-
-        - disable specific messages:
-
-            Preference - Package Settings - SublimeLinter - Settings
-
-            {
-                "lint_mode": "manual",
-                "linters": {
-                    "pycodestyle": {
-                        "ignore": ["E501"]
-                    },
-                    "pylint": {
-                        "args": ["--disable=R0913,R0914,C0301"]
-                    }
-                }
-            }
-
-    (3) Jedi - Python autocompletion
-
-    (4) SideBarEnhancement
-
-    (5) Boxy Theme 系列
-
-        - Boxy Theme
-
-        - Boxy Theme Addon - Font Face
-
-        - A File Icon
-
-3. 可选package：
-
-    (1) SublimeCodeIntel （和JEDI同时装可能有bug，只装JEDI一般就够了）
-
-4. 常用配置
-
-    (1) 下载安装 Microsoft Yahei Mono
-
-    (2) preference - settings-user:
-
-            "color_scheme": "Packages/User/SublimeLinter/Tomorrow-Night (SL).tmTheme",
-            "font_face": "Microsoft Yahei Mono",
-            "font_size": 13,
-            "ignored_packages":
-            [
-                "Vintage"
-            ],
-            "line_padding_bottom": 2,
-            "line_padding_top": 2,
-            "tab_size": 4,
-            "theme": "Boxy Ocean.sublime-theme",
-            "theme_sidebar_font_lg": true,
-            "theme_sidebar_indent_xl": true,
-            "translate_tabs_to_spaces": true,
-            "word_wrap": true,
-            "word_wrap_column": 100
-
-5. Windows 命令行开启方法
-
-    (1) 将 ~/sublime test 3/subl.exe 复制到 ~/windows/system32 下
-
-    (2) 在命令行下运行以下命令可直接打开
-
-            subl <文件或文件夹路径>
-
-    (3) 其他选项见
-
-            subl --help
+- 下载并安装：https://github.com/bmatzelle/gow
 
 ---
 
-命令行工具
----------------
 
-1. ConEmu: Powerful command line management tool
 
-    (1) https://conemu.github.io/
+## Sublime Text 3
 
-    (2) 个性化：
+#### 0. 下载并安装
 
-            settings - Main - Main console font - Microsoft Yahei Mono
-            settings - Appearance - Generic - Single instance mode (check)
-            settings - Appearance - Generic - Multiple consoles... (check)
-            settings - Tab bar - Tabs(...) - Tabs on bottom (uncheck)
-            settings - Tab bar - Tab templates (...) - Console: [%s]
-            settings - Task bar - Taskbar buttons - Show overlay icon (uncheck)
-            settings - Task bar - Taskbar buttons - Active console only (choose)
+- https://www.sublimetext.com/3
 
-    (3) 默认用 ConEmu 打开 .bat 或 .cmd
+#### 1. 配置 package controller
 
-            settings - Integration - Default term - Force ConEmu as default terminal for console applications (check)
+- 方法一（初次安装时）：
 
-2. Gow: Light version of Cygwin
+    点击  `Tools - Install Package Controller`，安装完成后该选项会消失
 
-    (1) https://github.com/bmatzelle/gow
+- 方法二：
+
+    (1) `View - Show Console` 或者 Ctrl + `  调出 console
+
+    (2) 粘贴以下代码到底部命令行并回车：
+    
+```python
+# ST3
+import urllib.request,os; pf = 'Package Control.sublime-package';
+ipp = sublime.installed_packages_path();
+urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));
+open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen('http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
+```
+
+- 安装完成后重启 Sublime Text，`Ctrl + Shift + P`，输入 `install`
+
+- 如需设置代理，进入 `Preferences - Package Settings - Package Control - Settings-User`，添加
+
+```json
+"http_proxy": "http://localhost:<port>",
+"https_proxy": "http://localhost:<port>"
+```
+
+#### 2. 安装 package
+
+(1) **tomorrow**
+
+(2) **SublimeLinter** & **SublimeLinter-pycodestyle** （需要先 pip install pylint）
+
+- disable specific messages:
+
+    打开 `Preference - Package Settings - SublimeLinter - Settings`，添加
+
+```json
+{
+    "lint_mode": "manual",
+    "linters": {
+        "pycodestyle": {
+            "ignore": ["E501"]
+        },
+        "pylint": {
+            "args": ["--disable=R0913,R0914,C0301"]
+        }
+    }
+}
+```
+
+(3) **JEDI** - Python autocompletion
+
+(4) **SideBarEnhancement**
+
+(5) **Boxy Theme** 系列
+
+- Boxy Theme
+- Boxy Theme Addon - Font Face
+- A File Icon
+
+#### 3. 可选package
+
+(1) **SublimeCodeIntel** （和 JEDI 同时装可能有 bug，只装 JEDI 一般就够了）
+
+#### 4. 常用配置
+
+(1) 下载安装 **Microsoft YaHei Mono**
+
+(2) 打开 `Preferences - Settings-user`，修改为
+
+```json
+"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Night (SL).tmTheme",
+"font_face": "Microsoft Yahei Mono",
+"font_size": 13,
+"ignored_packages":
+[
+    "Vintage"
+],
+"line_padding_bottom": 2,
+"line_padding_top": 2,
+"tab_size": 4,
+"theme": "Boxy Ocean.sublime-theme",
+"theme_sidebar_font_lg": true,
+"theme_sidebar_indent_xl": true,
+"translate_tabs_to_spaces": true,
+"word_wrap": true,
+"word_wrap_column": 100
+```
+
+#### 5. subl 启用方法
+
+(1) 将 `~/sublime test 3/subl.exe` 复制到 `~/windows/system32` 下
+
+(2) 在 cmd 下运行以下命令可使用 sublIme text 打开文件或文件夹
+
+```shell
+subl <文件或文件夹路径>
+```
+
+(3) 其他选项见
+
+```shell
+subl --help
+```
 
 ---
+
+
+
+## Typora
+
+- Download: https://typora.io/#windows
+- Custom Themes Gallery: http://theme.typora.io/，推荐 **Cobalt**
+- Preferences:
+    - 通用 - 重新打开上次使用的文件和目录
+    - 通用 - 自动保存
+    - 通用 - 打开高级设置 - TODO
+    - 外观 - 显示状态栏
+    - 外观 - 侧边栏的大纲视图允许折叠和展开
+    - 图像 - 优先使用相对路径
+    - Markdown - 内联公式
+    - Markdown - 显示行号
+    - Markdown - 默认缩进 - 4
+    - Markdown - 首行缩进
+    - Markdown - 使用成对的符号 - 匹配 Markdown 字符
+    - Markdown - 即时渲染 - 显示当前块元素的 Markdown 源码
+
+---
+
+
 
 Firefox
 ------------
 
-1. 必装扩展
+#### 0. 下载并安装
 
-    (1) FoxyProxy
+- https://www.mozilla.org/en-US/firefox/new/
 
-    (2) Adblock
+#### 1. 必装扩展
 
-2. 经典界面还原
+- **FoxyProxy**
+- **Adblock**
 
-    参考资料：https://github.com/Aris-t2/CustomCSSforFx
+#### 2. 经典界面还原
 
-    (1) open profile folder
+参考资料：https://github.com/Aris-t2/CustomCSSforFx
 
-        about:support > Profile Folder > Open Folder
+(1) `about:support > Profile Folder > Open Folder`
+        
+or `Shift+F2` to open Firefox's command line, then enter the command: `folder openprofile`
 
-        Shift+F2 to open Firefox's command line, then enter the command: **folder openprofile**
+(2) create folder: **chrome**
 
-    (2) create folder: chrome
+(3) copy **./src/userChrome.css** to such folder
 
-    (3) create file: userChrome.css
+#### 3. 多实例同时运行
 
-            #main-menubar > menu {
-              -moz-box-ordinal-group: 1 !important;
-              font-size: 13px;}  /*选单列 */
-
-            #main-menubar menu menupopup * {
-              font-size: 13px;
-            }
-
-            #nav-bar {
-              -moz-box-ordinal-group: 2 !important;
-              font-size: 13px;
-            }  /*导航列 */
-
-            #PersonalToolbar {
-              -moz-box-ordinal-group: 3 !important;
-              font-size: 13px;
-              height: 35px;
-            }  /*书签列 */
-
-            #personal-bookmarks .bookmark-item > .toolbarbutton-icon {
-             margin-left: 10px !important;
-             padding: 0px !important;
-            }
-
-            #TabsToolbar {
-              display: block;
-              -moz-box-ordinal-group: 4 !important;
-              font-size: 13px;
-              height: 30px;
-            }  /*分页列 */
-
-            #main-window:not([chromehidden*="toolbar"]) #navigator-toolbox {
-              padding-bottom: 35px !important;
-            }
-
-            #TabsToolbar {
-              position: absolute !important;
-              bottom: 5px !important;
-              width: 100vw !important;
-            }
-
-            #tabbrowser-tabs {
-              width: 120vw !important;
-            }
-
-            /* hide line above navigation toolbar appearing in some cases */
-            #main-window:not([tabsintitlebar]) #nav-bar,
-            #main-window:not([tabsintitlebar]) #navigator-toolbox {
-              border-top: 0 !important;
-              box-shadow: unset !important;
-            }
-
-            /* disable Mozillas tab jumping nonsense when moving tabs */
-            #navigator-toolbox[movingtab] > #titlebar > #TabsToolbar {
-              padding-bottom: unset !important;
-            }
-            #navigator-toolbox[movingtab] #tabbrowser-tabs {
-              padding-bottom: unset !important;
-              margin-bottom: unset !important;
-            }
-            #navigator-toolbox[movingtab] > #nav-bar {
-              margin-top: unset !important;
-            }
-
-            /* size of new tab tabs '+' icon */
-            .tabs-newtab-button .toolbarbutton-icon {
-              padding: 0px !important;
-              margin: 0px !important;
-              width: 15px !important;
-              height: 15px !important;
-            }
-
-3. 多实例同时运行
-
-    "~/firefox.exe" -no-remote -ProfileManager
-
-    create new profile
-
-    "~/firefox.exe" -no-remote -P <new profile name>
+- `"~/firefox.exe" -no-remote -ProfileManager`
+- create new profile
+- `"~/firefox.exe" -no-remote -P <new profile name>`
 
 ---
 
-SQL
+
+
+## SQL
 -------------
 
-1. Navicat
-    
-    (1) https://navicat.com/en
+### Navicat
+
+- Download: https://navicat.com/en
+
+---
