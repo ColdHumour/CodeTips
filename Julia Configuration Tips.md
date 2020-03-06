@@ -35,6 +35,7 @@ julia> Pkg.add("PkgMirrors")
 
 julia> using PkgMirrors
 julia> PkgMirrors.setmirror("ZJU")
+julia> PkgMirrors.setmirror("USTC")
 ```
 
 注：如果 PowerShell 版本不够，安装 [Microsoft Windows Management Framework 5.1](https://www.microsoft.com/en-us/download/details.aspx?id=54616)，之后重启电脑。
@@ -49,6 +50,8 @@ pkg> status
 ### 安装包
 
 如果是已经配置了镜像服务器，则每次包管理操作时都需要先 `using PkgMirrors`。自动运行的办法是在 `~/<user>/.julia/config/startup.jl` 中加上 `using PkgMirrors`，此后每次运行 REPL 都能看到。
+
+神奇的是，国内镜像服务器也会404，这个时候 `using PkgMirrors` 会遇到 Process Error，需要手动定位到 `<user>\.julia\packages\PkgMirrors\<hash>\cache\current.txt`，改成另一个镜像服务器或者删掉。可以写个脚本来测试，不妨作为最初的练习（见 `./src/startup.jl`）。
 
 另外 Pkg 会自动检测包的依赖及版本环境等，并且会附带安装，代价是慢。同时附带安装的依赖包并不会出现在 status 中，但下次显式安装该包会快很多。
 
@@ -72,7 +75,13 @@ julia> Pkg.update()
 pkg> up
 ```
 
-更新时容易出现的一个问题是 `repository dirty` 错误。暂时不明白问题的机理，一个治标不治本的方法是删掉 `~/<user>/.julia/repositories/general`，重启 REPL，再重新执行 update，这样至少在这一个 session 里问题不会再出现。如此操作会重新下载编译 `general`中的内容，非 常 慢。但好像这个问题不影响 add，所以一个可行的策略是不定期更新时，删掉 general，再一口气完成全部包管理工作。写一些脚本可以大大方便这个过程。
+更新时容易出现的一个问题是 `repository dirty` 错误。暂时不明白问题的机理，一个治标不治本的方法是删掉 `~/<user>/.julia/repositories/general`，重启 REPL，再重新执行 update，这样至少在这一个 session 里问题不会再出现。如此操作会重新下载编译 `general`中的内容，非 常 慢。但好像这个问题不影响 add。
+
+另外每次 update 之后更新的包都需要重新预编译。
+
+所以没事别随便 update。
+
+不定期 update 时，如果出现 `repository dirty` ，删掉 general，再一口气完成全部包管理工作。
 
 ### 常用包
 
