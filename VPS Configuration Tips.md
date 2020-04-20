@@ -1,6 +1,8 @@
 VPS CONFIGURATION TIPS
 =============================
 
+
+
 ## **基本Linux操作**
 
 一般选择 Ubuntu 18.04
@@ -86,7 +88,7 @@ PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 
 
 ### Android 端
 
-下载并安装 [BifrostV](https://apkpure.com/bifrostv/com.github.dawndiy.bifrostv)
+下载并安装 [V2rayNG（推荐）](https://github.com/2dust/v2rayNG/releases) 或 [BifrostV](https://apkpure.com/bifrostv/com.github.dawndiy.bifrostv)
 
 手动添加配置，填写 地址/端口/ID/AlterID 即可
 

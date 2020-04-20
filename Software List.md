@@ -21,4 +21,8 @@
 
 - 漫画 mobi 制作器：[chainLP](https://chocolatey.org/packages/chainlp)（需配合插件，见网盘）
 
-- 资源：[PanDownload](http://pandownload.com/)、百度网盘、迅雷、[BitComet](http://www.bitcomet.com/en)
+- Markdown 编辑：[cmd markdown（用于同步）](https://www.zybuluo.com/mdeditor)、[Typora（本地浏览编辑）](https://typora.io/)
+
+- 资源：[PanDownload](http://pandownload.com/)、百度网盘、迅雷、[BitComet](http://www.bitcomet.com/en)、[Free Download Manager](https://www.freedownloadmanager.org/zh/)
+
+
