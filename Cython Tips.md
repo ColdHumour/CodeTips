@@ -14,7 +14,7 @@ CYTHON TIPS
 
 ### (1) 64位 Python 3.5 及以上
 
-直接安装[Visual C++ Build Tools 2015](http://go.microsoft.com/fwlink/?LinkId=691126)
+直接安装[Visual C++ Build Tools 2019](https://visualstudio.microsoft.com/zh-hans/downloads/)
 
 ### (2) 32位 Python 3.3 及以上
 
