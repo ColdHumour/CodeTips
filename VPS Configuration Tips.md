@@ -156,3 +156,18 @@ PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 
 
 ---
 
+## VPS Server Hosts
+
+- https://www.vultr.com
+
+- https://www.linode.com
+
+- https://bandwagonhost.com
+
+- https://www.cloudsigma.com
+
+- https://www.kamatera.com
+
+- https://www.hostinger.com
+
+- https://www.ionos.com

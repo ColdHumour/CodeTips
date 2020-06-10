@@ -76,6 +76,20 @@ PYTHON CONFIGURATION TIPS
 
         新建 ~\.jupyter\custom\custom.js，将 src/custom.js 的代码复制过去
 
+7. 输出渲染
+
+        一般渲染成 html 效果都很好，但是渲染成 pdf 由于 jupyter 调用的是 latex，经常出错。为了让内嵌图片和 Mathjax 公式更好的显示，探索出来的一套方法如下：
+
+        > jupyter nbconvert "XXXX.ipynb"   # 渲染 html
+
+        浏览器打开 XXXX.html，等 Mathjax 加载完成后“另存网页为 - 全部（.htm, .html)”，一般会存下来一个 XXXX.htm 文件和一个文件夹 XXXX_files
+
+        安装 [wkhtmltopdf](https://wkhtmltopdf.org/)，有需要的话添加环境变量
+
+        > wkhtmltopdf --allow "..\XXXX_files" "XXXX.htm" XXXX.pdf
+
+        即可获得品质较高的 pdf 文件
+
 --------
 
 
