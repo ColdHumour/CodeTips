@@ -28,6 +28,14 @@ open `~/<user>/.gitconfig` and add following codes
     proxy = https://localhost:<port>
 ```
 
+### 局域网代码仓库设置
+
+- 在局域网公共盘合适位置创建 XXXX.git 空文件夹
+- 右键 Git Bash Here
+- git --bare init --shared=group
+- 完成之后就可以用 GitKraken 在本地 Clone 并 push 了
+
+
 ---
 
 
