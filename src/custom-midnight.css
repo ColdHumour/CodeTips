@@ -26,6 +26,8 @@ div.run_this_cell {
 
 /* GLOBALS */
 
+div#ipython-main-app {margin-left: auto !important;}
+
 @media not print { body { background-color: #eee; } }
 a { color: #CF4A4C; }
 a:hover, a:focus { color: #DE6F71; }

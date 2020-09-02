@@ -32,6 +32,8 @@ a:hover, a:focus { color: #DE6F71; }
 
 /* INTRO PAGE */
 
+div#ipython-main-app {margin-left: auto !important;}
+
 body[data-notebook-path] { background-color: #222; }
 body[data-notebook-path] #header, .terminal-app #header { display: none !important; }
 
