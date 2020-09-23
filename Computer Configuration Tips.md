@@ -45,6 +45,7 @@ open `~/<user>/.gitconfig` and add following codes
 ### ConEmu
 
 - 下载并安装：https://conemu.github.io/
+
 - 个性化：
     - settings - Main - Main console font - Microsoft Yahei Mono
     - settings - Appearance - Generic - Single instance mode (check)
@@ -56,6 +57,9 @@ open `~/<user>/.gitconfig` and add following codes
 
 - 默认用 ConEmu 打开 .bat 或 .cmd
     - settings - Integration - Default term - Force ConEmu as default terminal for console applications (check)
+
+- 解决中文乱码
+    - settings - Startup - Environment 下方加入 `set LANG=zh_CN.UTF-8`，重启 ConEmu
 
 ### GOW
 

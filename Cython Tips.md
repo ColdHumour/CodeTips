@@ -212,7 +212,7 @@ cdef 的函数是仅限 cython 环境调用的，例如在 jupyter notebook 中�
 ```python
 ctypedef vector[long] lvec
 
-cdef long f(long n, lvec cache):
+cdef long f(long n, lvec &cache):
     if n > 5:
         cache[n % 5] = n
         return f(n-5, cache)
@@ -238,3 +238,21 @@ def long mask_f():
 - vector 的排序需要额外 from libcpp.algorithm cimport sort，然后执行 sort(vec.begin(), vec.end())
 
 - 容器基本都没有 len, 而是用 .size() 方法获取
+
+**(5) Profiling**
+
+在 `%%cython` 下面加入
+
+```python
+# cython: profile=True
+```
+
+即可通过 `cProfile` 模块进行 Profiling，具体代码如下：
+
+```python
+import pstats, cProfile
+
+prof = cProfile.runctx("f(x)", globals(), locals())  # f(x) is cython function
+s = pstats.Stats(prof)
+s.strip_dirs().sort_stats("time").print_stats()
+```
