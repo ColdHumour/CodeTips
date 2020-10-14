@@ -63,8 +63,8 @@ PYTHON CONFIGURATION TIPS
 
 4. Jupyter 4.1 以上
 
-        c.NotebookApp.notebook_dir = u'F:\\lab\\'     # 工作路径
-        c.FileContentsManager.root_dir = u'F:\\lab\\notebooks'    # Notebook存储路径
+        c.NotebookApp.notebook_dir = u'F:\\lab\\'     # working directory for self-defined packages
+        c.FileContentsManager.root_dir = u'F:\\lab\\notebooks'    # default directory for notebooks
     
         # 注：如果Notebook存储路径中有与工作路径下同名的文件夹（大小写不敏感），则会自动切换工作路径
 
@@ -94,6 +94,40 @@ PYTHON CONFIGURATION TIPS
 
 
 
+## MATPLOTLIB
+
+1. 下载 Microsoft Yahei Mono （见同文件夹）
+
+2. 解决 matplotlib 及 seaborn 中文显示问题
+
+**matplotlib 3.3+:**
+
+    - 打开：
+
+            ~\Anaconda3\Lib\site-packages\matplotlib\mpl-data\matplotlibrc
+
+    - 在 `#font.sans-serif` 列表中加入 Microsoft YaHei Mono
+
+**older version:**
+
+    - 打开：
+
+            ~\Anaconda3\pkgs\<matplotlib>\Lib\site-packages\matplotlib\rcsetup.py (Anaconda 5+)
+    
+            ~\Anaconda3\Lib\site-packages\matplotlib\rcsetup.py (lower version)
+
+    - 在 defaultParams['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
+
+**检查及debug**
+
+    - 此时在 jupyter notebook 中执行 %pylab inline 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
+
+    - 检查 C:\~\<username>\.matplotlib，如有fontList.py3k.cache文件，删除，并重新启动jupyter notebook
+
+--------
+
+
+
 ## CVXOPT
 
 1. 下载cvxopt的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#cvxopt
@@ -114,55 +148,13 @@ PYTHON CONFIGURATION TIPS
 
 
 
-## gmpy2
-
-1. 下载[gmpy2](https://github.com/aleaxit/gmpy/releases)
-
-2. pip install ~.whl
-
---------
-
-
-
-## MATPLOTLIB
-
-1. 下载 Microsoft Yahei Mono （见同文件夹）
-
-2. 解决matplotlib中文显示
-
-    - 打开：
-
-            ~\Anaconda3\pkgs\<matplotlib>\Lib\site-packages\matplotlib\rcsetup.py (Anaconda 5+)
-    
-            ~\Anaconda3\Lib\site-packages\matplotlib\rcsetup.py (lower version)
-
-    - 在 defaultParams['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
-
-    - 此时在 jupyter notebook 中执行 %pylab inline 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
-
-    - 检查 C:\~\<username>\.matplotlib，如有fontList.py3k.cache文件，删除，并重新启动jupyter notebook
-
-3. 解决seaborn中文显示
-
-    - 打开：
-
-            ~\Anaconda3\pkgs\<seaborn>\site-packages\seaborn\rcmod.py (Anaconda 5+)
-    
-            ~\Anaconda3\Lib\site-packages\seaborn\rcmod.py (lower version)
-
-    - 在 style_dict['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
-
-    - 此时在 jupyter notebook 中执行 %pylab inline 并 import seaborn 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
-
---------
-
-
-
 ## OTHER PKGS
 
-- pip install selenium
+- conda install selenium
 
-- pip install termcolor
+- conda install termcolor
+
+- conda install gmpy2
 
 - jupyter notebook autoreload 报错处理：
 

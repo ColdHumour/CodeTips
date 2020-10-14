@@ -3,67 +3,37 @@ COMPUTER CONFIGURATION TIPS
 
 
 
-## Git
+## Firefox
 
-### Git For Windows
+#### 0. 下载并安装
 
-- 下载并安装：https://gitforwindows.org/index.html
+- https://www.mozilla.org/en-US/firefox/new/
 
-### GitKraken
+#### 1. 必装扩展
 
-- 下载并安装：https://www.gitkraken.com/
-- 登录
-- Preference - Authentication - 连接 Github 与 Bitbucket
-- clone/open repository
-- stage & commit & push
+- **FoxyProxy**
+- **Adblock**
+- **FoxyTab**
 
-### Git 代理设置
+#### 2. 经典界面还原
 
-open `~/<user>/.gitconfig` and add following codes
+参考资料：https://github.com/Aris-t2/CustomCSSforFx
 
-```
-[http]
-    proxy = http://localhost:<port>
-[https]
-    proxy = https://localhost:<port>
-```
+(1) `about:support > Profile Folder > Open Folder`
+        
+or `Shift+F2` to open Firefox's command line, then enter the command: `folder openprofile`
 
-### 局域网代码仓库设置
+(2) create folder: **chrome**
 
-- 在局域网公共盘合适位置创建 XXXX.git 空文件夹
-- 右键 Git Bash Here
-- git --bare init --shared=group
-- 完成之后就可以用 GitKraken 在本地 Clone 并 push 了
+(3) copy **./src/userChrome.css** to such folder
 
+(4) `about:config > toolkit.legacyUserProfileCustomizations.stylesheets > true`
 
----
+#### 3. 多实例同时运行
 
-
-
-## 命令行工具
-
-### ConEmu
-
-- 下载并安装：https://conemu.github.io/
-
-- 个性化：
-    - settings - Main - Main console font - Microsoft Yahei Mono
-    - settings - Appearance - Generic - Single instance mode (check)
-    - settings - Appearance - Generic - Multiple consoles... (check)
-    - settings - Tab bar - Tabs(...) - Tabs on bottom (uncheck)
-    - settings - Tab bar - Tab templates (...) - Console: [%s]
-    - settings - Task bar - Taskbar buttons - Show overlay icon (uncheck)
-    - settings - Task bar - Taskbar buttons - Active console only (choose)
-
-- 默认用 ConEmu 打开 .bat 或 .cmd
-    - settings - Integration - Default term - Force ConEmu as default terminal for console applications (check)
-
-- 解决中文乱码
-    - settings - Startup - Environment 下方加入 `set LANG=zh_CN.UTF-8`，重启 ConEmu
-
-### GOW
-
-- 下载并安装：https://github.com/bmatzelle/gow
+- `"~/firefox.exe" -no-remote -ProfileManager`
+- create new profile
+- `"~/firefox.exe" -no-remote -P <new profile name>`
 
 ---
 
@@ -132,11 +102,7 @@ open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen('http://sublime.w
 
 (4) **SideBarEnhancement**
 
-(5) **Boxy Theme** 系列
-
-- Boxy Theme
-- Boxy Theme Addon - Font Face
-- A File Icon
+(5) **A File Icon**
 
 #### 3. 可选package
 
@@ -149,7 +115,7 @@ open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen('http://sublime.w
 (2) 打开 `Preferences - Settings-user`，修改为
 
 ```json
-"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Night (SL).tmTheme",
+"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night-Bright.tmTheme",
 "font_face": "Microsoft Yahei Mono",
 "font_size": 13,
 "ignored_packages":
@@ -169,9 +135,9 @@ open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen('http://sublime.w
 
 #### 5. subl 启用方法
 
-(1) 将 `~/sublime test 3/subl.exe` 复制到 `~/windows/system32` 下
+(1) 将 `~/<sublime text>/subl.exe` 复制到 `~/windows/system32` 下
 
-(2) 在 cmd 下运行以下命令可使用 sublIme text 打开文件或文件夹
+(2) 在 cmd 下运行以下命令可使用 sublime text 打开文件或文件夹
 
 ```shell
 subl <文件或文件夹路径>
@@ -182,6 +148,70 @@ subl <文件或文件夹路径>
 ```shell
 subl --help
 ```
+
+---
+
+
+
+## Git
+
+#### Git Bash
+
+- 下载并安装：https://git-scm.com/download/win
+
+#### GitKraken
+
+- 下载并安装：https://www.gitkraken.com/
+- 登录
+- Preference - Authentication - 连接 Github 与 Bitbucket
+- clone/open repository
+- stage & commit & push
+
+#### Git 代理设置
+
+open `~/<user>/.gitconfig` and add following codes
+
+```
+[http]
+    proxy = http://localhost:<port>
+[https]
+    proxy = https://localhost:<port>
+```
+
+### 局域网代码仓库设置
+
+- 在局域网公共盘合适位置创建 XXXX.git 空文件夹
+- 右键 Git Bash Here
+- git --bare init --shared=group
+- 完成之后就可以用 GitKraken 在本地 Clone 并 push 了
+
+
+---
+
+
+
+## ConEmu
+
+- 下载并安装：https://conemu.github.io/
+
+- 个性化：
+    - settings - Fonts - Main console font - Microsoft Yahei Mono
+    - settings - Appearance - Generic - Single instance mode (check)
+    - settings - Appearance - Generic - Multiple consoles... (check)
+    - settings - Tab bar - Tabs(...) - Tabs on bottom (uncheck)
+    - settings - Tab bar - Tab templates (...) - Console: [%s]
+    - settings - Task bar - Taskbar buttons - Show overlay icon (uncheck)
+    - settings - Task bar - Taskbar buttons - Active console only (choose)
+
+- 默认用 ConEmu 打开 .bat 或 .cmd
+    - settings - Integration - Default term - Force ConEmu as default terminal for console applications (check)
+
+- 解决中文乱码
+    - settings - Startup - Environment 下方加入 `set LANG=zh_CN.UTF-8`，重启 ConEmu
+
+### GOW
+
+- 下载并安装：https://github.com/bmatzelle/gow
 
 ---
 
@@ -204,40 +234,6 @@ subl --help
     - Markdown - 首行缩进
     - Markdown - 使用成对的符号 - 匹配 Markdown 字符
     - Markdown - 即时渲染 - 显示当前块元素的 Markdown 源码
-
----
-
-
-
-Firefox
-------------
-
-#### 0. 下载并安装
-
-- https://www.mozilla.org/en-US/firefox/new/
-
-#### 1. 必装扩展
-
-- **FoxyProxy**
-- **Adblock**
-
-#### 2. 经典界面还原
-
-参考资料：https://github.com/Aris-t2/CustomCSSforFx
-
-(1) `about:support > Profile Folder > Open Folder`
-        
-or `Shift+F2` to open Firefox's command line, then enter the command: `folder openprofile`
-
-(2) create folder: **chrome**
-
-(3) copy **./src/userChrome.css** to such folder
-
-#### 3. 多实例同时运行
-
-- `"~/firefox.exe" -no-remote -ProfileManager`
-- create new profile
-- `"~/firefox.exe" -no-remote -P <new profile name>`
 
 ---
 
