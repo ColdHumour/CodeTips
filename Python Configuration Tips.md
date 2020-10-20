@@ -130,19 +130,9 @@ PYTHON CONFIGURATION TIPS
 
 ## CVXOPT
 
-1. 下载cvxopt的whl文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#cvxopt
+1. 下载 cvxopt 的 whl 文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#cvxopt
 
 2. 如果 pip install <cvxopt.whl> 出错，则先安装 [numpy+mkl](http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy)
-
---------
-
-
-
-## ORTOOLS
-
-1. 下载[Google Ortools](https://developers.google.com/optimization/)
-
-2. 解压, python setup.py install
 
 --------
 
@@ -154,7 +144,11 @@ PYTHON CONFIGURATION TIPS
 
 - conda install termcolor
 
+- conda install plotly
+
 - conda install gmpy2
+
+- python -m pip install --user ortools
 
 - jupyter notebook autoreload 报错处理：
 
