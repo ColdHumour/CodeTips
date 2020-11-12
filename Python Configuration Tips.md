@@ -76,54 +76,6 @@ PYTHON CONFIGURATION TIPS
 
         新建 ~\.jupyter\custom\custom.js，将 src/custom.js 的代码复制过去
 
-7. 输出渲染
-
-        一般渲染成 html 效果都很好，但是渲染成 pdf 由于 jupyter 调用的是 latex，经常出错。为了让内嵌图片和 Mathjax 公式更好的显示，探索出来的一套方法如下：
-
-        > jupyter nbconvert "XXXX.ipynb"   # 渲染 html
-
-        浏览器打开 XXXX.html，等 Mathjax 加载完成后“另存网页为 - 全部（.htm, .html)”，一般会存下来一个 XXXX.htm 文件和一个文件夹 XXXX_files
-
-        安装 [wkhtmltopdf](https://wkhtmltopdf.org/)，有需要的话添加环境变量
-
-        > wkhtmltopdf --allow "..\XXXX_files" "XXXX.htm" XXXX.pdf
-
-        即可获得品质较高的 pdf 文件
-
---------
-
-
-
-## MATPLOTLIB
-
-1. 下载 Microsoft Yahei Mono （见同文件夹）
-
-2. 解决 matplotlib 及 seaborn 中文显示问题
-
-**matplotlib 3.3+:**
-
-    - 打开：
-
-            ~\Anaconda3\Lib\site-packages\matplotlib\mpl-data\matplotlibrc
-
-    - 在 `#font.sans-serif` 列表中加入 Microsoft YaHei Mono
-
-**older version:**
-
-    - 打开：
-
-            ~\Anaconda3\pkgs\<matplotlib>\Lib\site-packages\matplotlib\rcsetup.py (Anaconda 5+)
-    
-            ~\Anaconda3\Lib\site-packages\matplotlib\rcsetup.py (lower version)
-
-    - 在 defaultParams['font.sans-serif'] 里加入 "Microsoft YaHei Mono"
-
-**检查及debug**
-
-    - 此时在 jupyter notebook 中执行 %pylab inline 之后，pylab.rcParams['font.sans-serif'] 中应当带有"Microsoft YaHei Mono"
-
-    - 检查 C:\~\<username>\.matplotlib，如有fontList.py3k.cache文件，删除，并重新启动jupyter notebook
-
 --------
 
 
@@ -149,13 +101,3 @@ PYTHON CONFIGURATION TIPS
 - conda install gmpy2
 
 - python -m pip install --user ortools
-
-- jupyter notebook autoreload 报错处理：
-
-        # ~anaconda/Lib/importlib/__init__.py 中 reload() 函数
-        # 加入一句判断，即最后一个 try 模块的末尾改成这样：
-    
-        spec = module.__spec__ = _bootstrap._find_spec(name, pkgpath, target)
-        if spec:
-            _bootstrap._exec(spec, module)
-        return sys.modules[name]
