@@ -39,7 +39,11 @@ EXCEL TIPS
 
 - 文件 - 选项 - 常规 - 新建工作簿时 - 修改字体和字号到想要的样子
 
-- 打开 `~\Windows\ShellNew\EXCEL12.xlsx`，Ctrl + A，把字体和字号设置成想要的样子，保存
+- `Win + R` 输入 `regedit` 打开注册表编辑器，查看 `HKEY_CLASSES_ROOT\.xlsx\Excel.Sheet.12\ShellNew` 项中的 `FileName` 的值
+
+- 打开该文件，`Ctrl + A`，把字体和字号设置成想要的样子，保存
+
+- 如果无法保存，则先复制一份到其他路径下改好，原路径中的文件 `Shift + 右键` 删除，然后把改好的文件重新复制到当前路径下
 
 ---
 
