@@ -100,4 +100,6 @@ PYTHON CONFIGURATION TIPS
 
 - conda install gmpy2
 
+- conda install arch -c bashtage
+
 - python -m pip install --user ortools
