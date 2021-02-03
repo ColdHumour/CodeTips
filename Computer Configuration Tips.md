@@ -47,27 +47,11 @@ or `Shift+F2` to open Firefox's command line, then enter the command: `folder op
 
 #### 1. 配置 package controller
 
-- 方法一（初次安装时）：
-
     点击  `Tools - Install Package Controller`，安装完成后该选项会消失
-
-- 方法二：
-
-    (1) `View - Show Console` 或者 Ctrl + `  调出 console
-
-    (2) 粘贴以下代码到底部命令行并回车：
-    
-```python
-# ST3
-import urllib.request,os; pf = 'Package Control.sublime-package';
-ipp = sublime.installed_packages_path();
-urllib.request.install_opener(urllib.request.build_opener(urllib.request.ProxyHandler()));
-open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen('http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
-```
 
 - 安装完成后重启 Sublime Text，`Ctrl + Shift + P`，输入 `install`
 
-- 如需设置代理，进入 `Preferences - Package Settings - Package Control - Settings-User`，添加
+- 如需设置代理，进入 `Preferences - Package Settings - Package Control - Settings`，添加
 
 ```json
 "http_proxy": "http://localhost:<port>",
@@ -98,7 +82,7 @@ open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen('http://sublime.w
 }
 ```
 
-(3) **JEDI** - Python autocompletion
+(3) **Jedi - Python autocompletion**
 
 (4) **SideBarEnhancement**
 
@@ -106,31 +90,29 @@ open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen('http://sublime.w
 
 #### 3. 可选package
 
-(1) **SublimeCodeIntel** （和 JEDI 同时装可能有 bug，只装 JEDI 一般就够了）
+(1) **Anaconda**（只是个插件）
 
 #### 4. 常用配置
 
 (1) 下载安装 **Microsoft YaHei Mono**
 
-(2) 打开 `Preferences - Settings-user`，修改为
+(2) 打开 `Preferences - Settings`，修改为
 
 ```json
-"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night-Bright.tmTheme",
-"font_face": "Microsoft Yahei Mono",
-"font_size": 13,
-"ignored_packages":
-[
-    "Vintage"
-],
-"line_padding_bottom": 2,
-"line_padding_top": 2,
-"tab_size": 4,
-"theme": "Boxy Ocean.sublime-theme",
-"theme_sidebar_font_lg": true,
-"theme_sidebar_indent_xl": true,
-"translate_tabs_to_spaces": true,
-"word_wrap": true,
-"word_wrap_column": 100
+{
+    "font_face": "Microsoft Yahei Mono",
+    "font_size": 13,
+    "ignored_packages":
+    [
+        "Vintage"
+    ],
+    "line_padding_bottom": 2,
+    "line_padding_top": 2,
+    "tab_size": 4,
+    "translate_tabs_to_spaces": true,
+    "word_wrap": true,
+    "word_wrap_column": 100
+}
 ```
 
 #### 5. subl 启用方法
@@ -209,6 +191,9 @@ open `~/<user>/.gitconfig` and add following codes
 - 解决中文乱码
     - settings - Startup - Environment 下方加入 `set LANG=zh_CN.UTF-8`，重启 ConEmu
 
+---
+
+
 ### GOW
 
 - 下载并安装：https://github.com/bmatzelle/gow
@@ -216,31 +201,6 @@ open `~/<user>/.gitconfig` and add following codes
 ---
 
 
-
-## Typora
-
-- Download: https://typora.io/#windows
-- Custom Themes Gallery: http://theme.typora.io/，推荐 **Cobalt**
-- Preferences:
-    - 通用 - 重新打开上次使用的文件和目录
-    - 通用 - 自动保存
-    - 通用 - 打开高级设置 - TODO
-    - 外观 - 显示状态栏
-    - 外观 - 侧边栏的大纲视图允许折叠和展开
-    - 图像 - 优先使用相对路径
-    - Markdown - 内联公式
-    - Markdown - 显示行号
-    - Markdown - 默认缩进 - 4
-    - Markdown - 首行缩进
-    - Markdown - 使用成对的符号 - 匹配 Markdown 字符
-    - Markdown - 即时渲染 - 显示当前块元素的 Markdown 源码
-
----
-
-
-
-## SQL
--------------
 
 ### Navicat
 

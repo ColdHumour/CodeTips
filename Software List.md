@@ -3,8 +3,6 @@
 
 个人偏好，主要用于新电脑备忘，部分不常见的软件不定期更新链接，编程相关软件见 Computer Configuration Tips 和对应语言的 Configuration Tips。
 
-- 输入法：搜狗
-
 - 网页浏览器：[Firefox](https://www.mozilla.org/en-US/firefox/new/)
 
 - 图片浏览器：[Honeyview](http://www.bandisoft.com/honeyview/)
@@ -21,8 +19,6 @@
 
 - 漫画 mobi 制作器：[chainLP](https://chocolatey.org/packages/chainlp)（需配合插件，见网盘）
 
-- Markdown 编辑：[cmd markdown（用于同步）](https://www.zybuluo.com/mdeditor)、[Typora（本地浏览编辑）](https://typora.io/)
+- Markdown 编辑：[Notion](https://www.notion.so/)
 
-- 资源：[PanDownload](http://pandownload.com/)、百度网盘、迅雷、[BitComet](http://www.bitcomet.com/en)、[Free Download Manager](https://www.freedownloadmanager.org/zh/)
-
-
+- 资源：百度网盘、[BitComet](http://www.bitcomet.com/en)、[Free Download Manager](https://www.freedownloadmanager.org/zh/)
