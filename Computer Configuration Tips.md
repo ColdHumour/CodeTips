@@ -17,7 +17,9 @@ COMPUTER CONFIGURATION TIPS
 
 #### 2. 经典界面还原
 
-参考资料：https://github.com/Aris-t2/CustomCSSforFx
+参考资料：
+- https://github.com/Aris-t2/CustomCSSforFx
+- https://www.userchrome.org/
 
 (1) `about:support > Profile Folder > Open Folder`
         

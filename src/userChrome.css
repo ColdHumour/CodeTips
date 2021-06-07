@@ -1,21 +1,21 @@
 #main-menubar > menu {
     -moz-box-ordinal-group: 1 !important;
-    font-size: 13px;
+    font-size: 13px !important;
 }  /*选单列 */
 
 #main-menubar menu menupopup * {
-    font-size: 13px;
+    font-size: 13px !important;
 }
 
 #nav-bar {
     -moz-box-ordinal-group: 2 !important;
-    font-size: 13px;
+    font-size: 13px !important;
 }  /*导航列 */
 
 #PersonalToolbar {
     -moz-box-ordinal-group: 3 !important;
-    font-size: 13px;
-    height: 35px;
+    font-size: 13px !important;
+    height: 35px !important;
 }  /*书签列 */
 
 #personal-bookmarks .bookmark-item > .toolbarbutton-icon {
@@ -24,17 +24,24 @@
 }
 
 #TabsToolbar {
-    display: block;
+    display: block !important;
     -moz-box-ordinal-group: 4 !important;
     position: absolute !important;
-    font-size: 13px;
-    bottom: 5px !important;
+    font-size: 13px !important;
     width: 100vw !important;
-    height: 30px;
+    height: 30px !important;
+}  /*分页列 */
+
+#main-window[sizemode="maximized"] #TabsToolbar {
+    top: 110px !important;
+}  /*分页列 */
+
+#main-window:not([sizemode="maximized"]) #TabsToolbar {
+    top: 105px !important;
 }  /*分页列 */
 
 #main-window:not([chromehidden*="toolbar"]) #navigator-toolbox {
-    padding-bottom: 35px !important;
+    padding-bottom: 42px !important;
 }
 
 #tabbrowser-tabs {
