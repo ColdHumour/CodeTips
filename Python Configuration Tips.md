@@ -41,9 +41,11 @@ PYTHON CONFIGURATION TIPS
 
 ## JUPYTER NOTEBOOK
 
+*版本6.30+*
+
 1. 创建个性化配置文件
 
-        jupyter notebook --generate-config
+        jupyter server --generate-config
 
 2. 确认kernel路径
 
@@ -55,15 +57,15 @@ PYTHON CONFIGURATION TIPS
 
 3. Windows下，打开
    
-        C:\Documents and Settings\<username>\.jupyter\jupyter_notebook_config.py
+        C:\Documents and Settings\<username>\.jupyter\jupyter_server_config.py
     
         或者
     
-        C:\users\<username>\.jupyter\jupyter_notebook_config.py
+        C:\users\<username>\.jupyter\jupyter_server_config.py
 
-4. Jupyter 4.1 以上
+4. 在文件开头加入
 
-        c.NotebookApp.notebook_dir = u'F:\\lab\\'     # working directory for self-defined packages
+        c.ServerApp.notebook_dir = u'F:\\lab\\'     # working directory for self-defined packages
         c.FileContentsManager.root_dir = u'F:\\lab\\notebooks'    # default directory for notebooks
     
         # 注：如果Notebook存储路径中有与工作路径下同名的文件夹（大小写不敏感），则会自动切换工作路径
@@ -75,6 +77,13 @@ PYTHON CONFIGURATION TIPS
 6. 默认显示行号和使用SublimeText的快捷键
 
         新建 ~\.jupyter\custom\custom.js，将 src/custom.js 的代码复制过去
+
+7. 如果要打开两个 notebook 环境可以用
+
+        jupyter server --config="notfound" --notebook-dir="XXXX" --port=XXXX
+
+        # 注： --config="notfound" 是为了防止读上面修改的配置文件
+        #     当然也可以写两套配置文件然后指向，直接命令行另存 cmd 文件比较偷懒
 
 --------
 
