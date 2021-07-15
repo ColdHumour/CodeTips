@@ -74,6 +74,8 @@ VPS CONFIGURATION TIPS
 
 ### Windows 端
 
+(1) 使用v2rayN
+
 下载并解压 [v2rayN](https://github.com/2dust/v2rayN/releases)
 
 配置
@@ -85,6 +87,107 @@ VPS CONFIGURATION TIPS
 PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 FoxyProxy
 
 及时检查更新 v2rayN/v2rayCore/PAC，PAC更新需要在PAC模式下运行
+
+(2) Forward Proxy (v2rayN 目前不支持)
+
+在本地连接必须通过代理的情况下，需要在配置文件中特别设置，并用通常方式执行 v2ray.exe。
+
+浏览器端设置同 v2rayN，设置代理到 127.0.0.1:1080，此时网络流为 PC - vmess - internet proxy - vmess server - target，通过 internet proxy 的数据流为加密过的。
+
+修改 v2ray.exe 同目录下的 config.json 中的 outbounds 和 routing 如下：
+
+          "outbounds": [
+            {
+              "tag": "proxy",
+              "protocol": "vmess",
+              "settings": {
+                "vnext": [
+                  {
+                    "address": "XXXX",  # 服务器地址
+                    "port": XXXX,  # 服务器端口
+                    "users": [
+                      {
+                        "id": "XXXX",  # id
+                        "alterId": 64,
+                        "email": "t@t.tt",
+                        "security": "auto"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "streamSettings": {
+                "network": "tcp"
+              },
+              "mux": {
+                "enabled": false,
+                "concurrency": -1
+              },
+              "proxySettings": {
+                "tag": "HTTP"
+              }
+            },
+            {
+              "tag": "HTTP",
+              "protocol": "http",
+              "settings": {
+                "servers": [{
+                  "address": "XXXX",  # 本地代理地址
+                  "port": 8002  # 本地代理端口
+                }
+              ]}
+            },
+            {
+              "tag": "direct",
+              "protocol": "freedom",
+              "settings": {},
+              "proxySettings": {
+                "tag": "HTTP"
+              }
+            },
+            {
+              "tag": "block",
+              "protocol": "blackhole",
+              "settings": {
+                "response": {
+                  "type": "http"
+                }
+              }
+            }
+          ],
+          "routing": {
+            "domainStrategy": "IPIfNonMatch",
+            "rules": [
+              {
+                "type": "field",
+                "outboundTag": "block",
+                "domain": [
+                  "geosite:category-ads-all"
+                ]
+              },
+              {
+                "type": "field",
+                "outboundTag": "direct",
+                "domain": [
+                  "geosite:private",
+                  "geosite:tld-cn",
+                  "geosite:cn"
+                ]
+              },
+              {
+                "type": "field",
+                "outboundTag": "proxy",
+                "domain": ["geosite:geolocation-!cn"]
+              },
+              {
+                "type": "field",
+                "outboundTag": "proxy",
+                "network": "tcp,udp"
+              }
+            ]
+          }
+
+
 
 ### Android 端
 

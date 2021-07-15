@@ -113,7 +113,8 @@ or `Shift+F2` to open Firefox's command line, then enter the command: `folder op
     "tab_size": 4,
     "translate_tabs_to_spaces": true,
     "word_wrap": true,
-    "word_wrap_column": 100
+    "word_wrap_column": 100,
+    "color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
 }
 ```
 
