@@ -78,12 +78,9 @@ PYTHON CONFIGURATION TIPS
 
         新建 ~\.jupyter\custom\custom.js，将 src/custom.js 的代码复制过去
 
-7. 如果要打开两个 notebook 环境可以用
+7. 如果要打开两个 notebook 环境，建议创建另一个 config 文件，把相应参数修改好后
 
-        jupyter server --config="notfound" --notebook-dir="XXXX" --port=XXXX
-
-        # 注： --config="notfound" 是为了防止读上面修改的配置文件
-        #     当然也可以写两套配置文件然后指向，直接命令行另存 cmd 文件比较偷懒
+        jupyter server --config=".jupyter/new_config_file.py" --port=XXXX
 
 --------
 

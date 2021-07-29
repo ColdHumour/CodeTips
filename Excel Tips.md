@@ -50,7 +50,7 @@ EXCEL TIPS
 
 - 文件 - 选项 - 常规 - 新建工作簿时 - 修改字体和字号到想要的样子
 
-- `Win + R` 输入 `regedit` 打开注册表编辑器，查看 `HKEY_CLASSES_ROOT\.xlsx\Excel.Sheet.12\ShellNew` 项中的 `FileName` 的值
+- `Win + R` 输入 `regedit` 打开注册表编辑器，查看 `HKEY_CLASSES_ROOT\.xlsx\Excel.Sheet.12\ShellNew` 项中的 `FileName` 的值，如果找不到的话可以试试 `C:\Windows\SHELLNEW`
 
 - 打开该文件，`Ctrl + A`，把字体和字号设置成想要的样子，保存
 
