@@ -35,6 +35,15 @@ PYTHON CONFIGURATION TIPS
     
         conda clean -a  # 清除 tar 包和 module 包
 
+5. 代理设置
+
+    打开 \~/<user>/.condarc 输入
+
+        proxy_servers: {
+            http: 12.4.210.120:8002,
+            https: 12.4.210.120:8002
+        }
+
 -------------
 
 
@@ -108,4 +117,4 @@ PYTHON CONFIGURATION TIPS
 
 - conda install arch -c bashtage
 
-- python -m pip install --user ortools
+- python -m pip install --user ortools  # 如果报 `ValueError: check_hostname requires server_hostname` 可以尝试在 .condarc 配置好 proxy_servers 后关闭系统代理，似乎 pip 会从配置的代理尝试连接故不用再设置系统代理
