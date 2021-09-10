@@ -20,6 +20,7 @@ EXCEL TIPS
 - 字符串转日期，如20170101这种，其他情况可以此类推
 
         =DATE(LEFT(A1, 4), MID(A1, 5, 2), RIGHT(A1, 2))
+        =DATEVALUE(A1)
 
 - 日期转字符串，如2017/1/1，其他情况可以此类推
 
@@ -53,6 +54,8 @@ EXCEL TIPS
 主要是字体和字号，由于 Excel 新建文件和新建 sheet 的机制不一样，因此需要修改多个地方。
 
 - 文件 - 选项 - 常规 - 新建工作簿时 - 修改字体和字号到想要的样子
+
+- 开始 - 样式 - 单元格样式 - 常规（右键 - 修改） - 修改字体和字号到想要的样子，保存
 
 - `Win + R` 输入 `regedit` 打开注册表编辑器，查看 `HKEY_CLASSES_ROOT\.xlsx\Excel.Sheet.12\ShellNew` 项中的 `FileName` 的值，如果找不到的话可以试试 `C:\Windows\SHELLNEW`
 

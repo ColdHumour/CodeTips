@@ -87,6 +87,10 @@ PYTHON CONFIGURATION TIPS
 
         新建 ~\.jupyter\custom\custom.js，将 src/custom.js 的代码复制过去
 
+7. 自动换行
+
+        新建 ~\.jupyter\nbconfig\notebook.json，将 src/notebook.json 的代码复制过去
+
 7. 如果要打开两个 notebook 环境，建议创建另一个 config 文件，把相应参数修改好后
 
         jupyter server --config=".jupyter/new_config_file.py" --port=XXXX
