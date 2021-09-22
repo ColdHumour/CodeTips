@@ -40,8 +40,8 @@ PYTHON CONFIGURATION TIPS
     打开 \~/<user>/.condarc 输入
 
         proxy_servers: {
-            http: 12.4.210.120:8002,
-            https: 12.4.210.120:8002
+            http: <host>:<port>,
+            https: <host>:<port>
         }
 
 -------------
