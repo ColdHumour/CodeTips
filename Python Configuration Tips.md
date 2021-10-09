@@ -37,7 +37,7 @@ PYTHON CONFIGURATION TIPS
 
 5. 代理设置
 
-    打开 \~/<user>/.condarc 输入
+    打开 \~/\<user\>/.condarc 输入
 
         proxy_servers: {
             http: <host>:<port>,
