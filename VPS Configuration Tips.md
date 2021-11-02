@@ -5,7 +5,7 @@ VPS CONFIGURATION TIPS
 
 ## **基本Linux操作**
 
-一般选择 Ubuntu 18.04
+一般选择 Ubuntu 21.10 x64
 
     > passwd
     
@@ -21,7 +21,9 @@ VPS CONFIGURATION TIPS
 
 ## **常用工具**
 
-- [IPCheck](http://ip100.info/check)
+- [IPCheck1](http://ip100.info/check)
+
+- [IPCheck2](https://www.toolsdaquan.com/ipcheck/)
 
 - [Putty](https://putty.org/)
 
@@ -37,27 +39,48 @@ VPS CONFIGURATION TIPS
 
 - https://toutyrater.github.io
 
-- https://www.codercto.com/a/22204.html
-
 - https://tlanyan.me/v2ray-tutorial/
 
-- https://www.lingbaoboy.com/2019/03/v2raywebsocket-tls-web.html
-
-- https://www.4spaces.org/v2ray-nginx-tls-websocket/
+- https://www.4spaces.org/install-v2ray-on-debian-2021/
 
 ### Server 端
 
-    > bash <(curl -L -s https://install.direct/go.sh)
+    > bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+    > bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh)
 
-之后可以
+修改配置文件
 
-    > cat /etc/v2ray/config.json
+    > nano /usr/local/etc/v2ray/config.json
 
-查看配置文件，或者
+主要修改 "port", "id"，其中 uuid 可以[在线生成](https://www.uuidgenerator.net/)，示例文本为
 
-    > nano /etc/v2ray/config.json
+          {
+            "inbounds": [{
+                "port": <port>,
+                "protocol": "vmess",
+                "settings": {
+                  "clients": [{
+                      "id": "<uuid>",
+                      "alterId": 64
+                  }]
+                }
+            }],
+            "outbounds": [{
+                "protocol": "freedom",
+                "settings": {}
+            }]
+          }
 
-有需要可以修改 "port", "Id" 和 "alterId" 字段，之后配置启动
+修改好可以查看配置文件
+
+    > cat /usr/local/etc/v2ray/config.json
+
+然后需要检查端口是否开通 tcp
+
+    > sudo ufw status verbose
+    > sudo ufw allow <port>/tcp
+
+之后配置启动
 
     > systemctl enable v2ray
     > systemctl start v2ray
