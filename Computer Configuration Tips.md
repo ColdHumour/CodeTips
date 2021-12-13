@@ -2,6 +2,16 @@ COMPUTER CONFIGURATION TIPS
 =============================
 
 
+## 权限问题
+
+创建 bat 文件
+
+        cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" %1"
+
+将 exe 文件拖到 bat 文件上打开
+
+---
+
 
 ## Firefox
 
