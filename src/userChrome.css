@@ -33,7 +33,7 @@
 }  /*分页列 */
 
 #main-window[sizemode="maximized"] #TabsToolbar {
-    top: 110px !important;
+    top: 105px !important;
 }  /*分页列 */
 
 #main-window:not([sizemode="maximized"]) #TabsToolbar {
