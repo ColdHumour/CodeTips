@@ -70,6 +70,15 @@ or `Shift+F2` to open Firefox's command line, then enter the command: `folder op
 "https_proxy": "http://localhost:<port>"
 ```
 
+- 如遇到 There are no packages available for installation 的错误，在命令行中输入
+
+```shell
+ping sublime.wbond.net
+```
+
+    而后修改 `C:\Windows\System32\drivers\etc\hosts`，添加 \<ping显示的ip\> sublime.wbond.net
+
+
 #### 2. 安装 package
 
 (1) **tomorrow**
@@ -96,9 +105,11 @@ or `Shift+F2` to open Firefox's command line, then enter the command: `folder op
 
 (3) **Jedi - Python autocompletion**
 
-(4) **SideBarEnhancement**
+(4) **PackageResourceViewer**
 
-(5) **A File Icon**
+(5) **SideBarEnhancement**
+
+(6) **A File Icon**
 
 #### 3. 可选package
 
@@ -127,6 +138,10 @@ or `Shift+F2` to open Firefox's command line, then enter the command: `folder op
     "color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
 }
 ```
+
+(3) 修改 Python build command
+
+    `Ctrl + Shift + P`，输入 prv，打开 `PackageResourceViewer: Open Resource`，输入 python，找到 Python.sublime-build，修改相应字段即可
 
 #### 5. subl 启用方法
 
