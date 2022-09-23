@@ -22,7 +22,7 @@ EXCEL TIPS
         =DATE(LEFT(A1, 4), MID(A1, 5, 2), RIGHT(A1, 2))
         =DATEVALUE(A1)
 
-- 日期转字符串，如2017/1/1，其他情况可以此类推
+- 日期转字符串，如2017-01-01，其他情况可以此类推
 
         =TEXT(A1, "yyyy-mm-dd")
 
