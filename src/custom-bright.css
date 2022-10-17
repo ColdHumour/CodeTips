@@ -7,6 +7,10 @@ div.run_this_cell {
     display: none;
 }
 
+.container { width:85% !important; }
+.output_result { max-width:85% !important; }
+/*.prompt { display:none !important; }*/
+
 /* GLOBALS */
 body {background-color: #eff1f5;}
 a {color: #8fa1b3;}

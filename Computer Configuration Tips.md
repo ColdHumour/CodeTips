@@ -30,6 +30,7 @@ COMPUTER CONFIGURATION TIPS
 - **FoxyProxy**
 - **Adblock**
 - **FoxyTab**
+- **Dark Reader**
 
 #### 2. 经典界面还原
 
