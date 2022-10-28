@@ -61,7 +61,7 @@ VPS CONFIGURATION TIPS
                 "settings": {
                   "clients": [{
                       "id": "<uuid>",
-                      "alterId": 64
+                      "alterId": 0
                   }]
                 }
             }],
