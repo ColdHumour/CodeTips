@@ -1,22 +1,5 @@
-COMPUTER CONFIGURATION TIPS
+SOFTWARES CONFIG TIPS
 =============================
-
-
-## WINDOWS
-
-#### 权限问题
-
-创建 bat 文件
-
-        cmd /min /C "set __COMPAT_LAYER=RUNASINVOKER && start "" %1"
-
-将 exe 文件拖到 bat 文件上打开
-
-#### 桌面图标空白
-
-任务管理器 - Windows 资源管理器 - 右键 - 重新启动
-
----
 
 
 ## Firefox
@@ -232,13 +215,5 @@ open `~/<user>/.gitconfig` and add following codes
 ### GOW
 
 - 下载并安装：https://github.com/bmatzelle/gow
-
----
-
-
-
-### Navicat
-
-- Download: https://navicat.com/en
 
 ---

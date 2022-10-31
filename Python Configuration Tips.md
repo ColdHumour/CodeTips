@@ -175,7 +175,7 @@ PYTHON CONFIGURATION TIPS
 
 - conda install termcolor
 
-- conda install plotly
+- conda install gevent
 
 - conda install gmpy2
 
