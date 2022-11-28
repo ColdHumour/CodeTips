@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 [[! -f /etc/codetips/vps/utils.sh]] && return 1
 
@@ -32,7 +32,9 @@ echo -e "Downloading v2Ray archive: $yellow$DOWNLOAD_LINK$none"
 curl -sS -H 'Cache-Control: no-cache' -o "$ZIP_FILE" "$DOWNLOAD_LINK"
 
 unzip -o $ZIP_FILE -d $V2RAY_FOLDER
-chmod +x "$V2RAY_FOLDER{v2ray,v2ctl}"
+chmod +x "${V2RAY_FOLDER}v2ray"
+chmod +x "${V2RAY_FOLDER}v2ctl"
+chmod +x "${V2RAY_FOLDER}systemd"
 
 # ---------------- config server ----------------
 
@@ -57,7 +59,7 @@ Environment="V2RAY_VMESS_AEAD_FORCED=false"
 #CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 #AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/env v2ray.vmess.aead.forced=false /usr/bin/v2ray/v2ray run -config /etc/v2ray/config.json
+ExecStart=/usr/bin/env v2ray.vmess.aead.forced=false /usr/bin/v2ray/v2ray run -config=/etc/v2ray/config.json
 #Restart=on-failure
 Restart=always
 [Install]
