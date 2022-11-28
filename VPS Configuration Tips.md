@@ -12,6 +12,7 @@ VPS CONFIGURATION TIPS
     > apt-get update
     > apt-get upgrade
     > apt install net-tools
+    > apt install firewalld
     
     > ifconfig
 
@@ -33,6 +34,8 @@ VPS CONFIGURATION TIPS
 
 ## V2RAY
 
+1. 准备工作
+
 ### 参考资料
 
 - https://guide.v2fly.org/
@@ -42,6 +45,56 @@ VPS CONFIGURATION TIPS
 - https://tlanyan.me/v2ray-tutorial/
 
 - https://www.4spaces.org/install-v2ray-on-debian-2021/
+
+- https://www.itblogcn.com/article/1501.html
+
+### VPS Server Hosts
+
+- [Vultr](https://www.vultr.com): cloud instance; no ipv6
+
+- https://www.linode.com
+
+- https://bwh88.net/
+
+- https://www.cloudsigma.com
+
+- https://www.kamatera.com
+
+- https://www.hostinger.com
+
+- https://www.ionos.com
+
+2. 快速部署
+
+参考 https://www.itblogcn.com/article/1501.html
+
+### Server 端
+
+    > bash <(curl -s -L https://raw.githubusercontent.com/xyz690/v2ray/master/go.sh)
+
+### 检查状态
+
+    > systemctl status v2ray
+
+如果 failed 首先检查运行命令是否 `/usr/bin/v2ray/v2ray run -config /etc/v2ray/config.json`，为否则
+
+    > nano /usr/lib/systemd/system/v2ray.service
+
+修改 `ExecStart=` 后面的对应部分，然后
+
+    > systemctl daemon-reload; systemctl restart v2ray
+
+再检查是否 failed，如果仍是，则用
+
+    > /usr/bin/v2ray/v2ray run -config /etc/v2ray/config.json
+
+查看报错信息，并修改配置文件
+
+    > nano /etc/v2ray/config.json
+
+再 restart 看直到 active 为止
+
+3. 手动完整部署
 
 ### Server 端
 
@@ -78,7 +131,13 @@ VPS CONFIGURATION TIPS
 然后需要检查端口是否开通 tcp
 
     > sudo ufw status verbose
+    > sudo ufw allow <port>/
     > sudo ufw allow <port>/tcp
+    > systemctl enable firewalld.service
+    > systemctl start firewalld.service
+    > firewall-cmd --zone=public --list-ports
+    > firewall-cmd --zone=public --add-port=<port>/tcp --permanent
+    > firewall-cmd --zone=public --add-port=<port>/udp --permanent
 
 之后配置启动
 
@@ -221,79 +280,3 @@ PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 
 推荐仅对部分应用启用 V2ray
 
 ---
-
-
-
-## SSCLOAK
-
-### 参考资料
-
-- https://github.com/cbeuw/Cloak
-
-- https://github.com/cbeuw/Cloak-android
-
-- https://github.com/HirbodBehnam/Shadowsocks-Cloak-Installer
-
-### Server 端
-
-(1) 安装 git
-
-    > apt-get install git
-
-(2) clone 脚本
-
-    > git clone https://github.com/HirbodBehnam/Shadowsocks-Cloak-Installer.git
-
-(3) 运行脚本
-
-    > bash Shadowsocks-Cloak-Installer/Shadowsocks-Cloak-Installer.sh
-    
-    > cat /etc/shadowsocks-libev/ckclient.json
-    
-    > cat /etc/shadowsocks-libev/config.json
-
-如有需要可以自行修改 config.json 中的必要字段，之后配置启动
-
-    > nohup ss-server -c /etc/shadowsocks-libev/config.json &
-    
-    > jobs -l
-    
-    > kill -9 ####
-
-### Windows 端
-
-下载并解压 [SSWin](https://github.com/shadowsocks/shadowsocks-windows/releases) 和 [ck-client-windows](https://github.com/cbeuw/Cloak/releases)
-
-配置
-
-- 创建 ckclient.json 并使用与 Server 端相同的配置，核心是 UID 和 PublicKey
-  
-- 服务器 -> 编辑服务器 -> 填写 地址/端口/密码/加密/插件程序/插件选项
-  
-- 参数设置 -> PAC模式，需通过浏览器设置代理，如 FoxyProxy
-
-### Android 端
-
-下载并安装 [SSAndroid](https://github.com/shadowsocks/shadowsocks-android/releases) 和 [Cloak-Android](https://github.com/cbeuw/Cloak-android/releases)
-
-手动添加配置，填写 地址/端口/密码/加密/插件配置，插件配置核心是 UID 和 PublicKey
-
-推荐仅对部分应用启用 SSCloak
-
----
-
-## VPS Server Hosts
-
-- https://www.vultr.com
-
-- https://www.linode.com
-
-- https://bandwagonhost.com
-
-- https://www.cloudsigma.com
-
-- https://www.kamatera.com
-
-- https://www.hostinger.com
-
-- https://www.ionos.com
