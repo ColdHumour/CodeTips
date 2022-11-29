@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-[[! -f /etc/codetips/vps/utils.sh]] && return 1
+[[ ! -f /etc/codetips/vps/utils.sh ]] && return 1
 
 # $MACHINE, $CMD, $IP
 . "/etc/codetips/vps/utils.sh"
@@ -18,11 +18,11 @@ PORT=$(shuf -i20001-65535 -n1)
 
 # ---------------- fetch v2ray files ----------------
 
-# echo $TMP_FILE
-# curl -sS -H "Accept: application/vnd.github.v3+json" -o "$TMP_FILE" 'https://api.github.com/repos/v2fly/v2ray-core/releases/latest'
-# RELEASE_VERSION="$(sed 'y/,/\n/' "$TMP_FILE" | grep 'tag_name' | awk -F '"' '{print $4}')"
+echo $TMP_FILE
+curl -sS -H "Accept: application/vnd.github.v3+json" -o "$TMP_FILE" 'https://api.github.com/repos/v2fly/v2ray-core/releases/latest'
+RELEASE_VERSION="$(sed 'y/,/\n/' "$TMP_FILE" | grep 'tag_name' | awk -F '"' '{print $4}')"
 
-RELEASE_VERSION="v4.45.2"  # 5.0 以上好像有bug
+# RELEASE_VERSION="v4.45.2"  # 5.0 以上好像有bug
 
 echo -e "Latest v2ray version: $yellow$RELEASE_VERSION$none"
 
@@ -34,7 +34,11 @@ curl -sS -H 'Cache-Control: no-cache' -o "$ZIP_FILE" "$DOWNLOAD_LINK"
 unzip -o $ZIP_FILE -d $V2RAY_FOLDER
 chmod +x "${V2RAY_FOLDER}v2ray"
 chmod +x "${V2RAY_FOLDER}v2ctl"
-chmod +x "${V2RAY_FOLDER}systemd"
+
+# install -m 644 "${V2RAY_FOLDER}/systemd/system/v2ray.service" /etc/systemd/system/v2ray.service
+# install -m 644 "${V2RAY_FOLDER}/systemd/system/v2ray@.service" /etc/systemd/system/v2ray@.service
+# mkdir -p '/etc/systemd/system/v2ray.service.d'
+# mkdir -p '/etc/systemd/system/v2ray@.service.d/'
 
 # ---------------- config server ----------------
 
@@ -47,6 +51,7 @@ cat >/lib/systemd/system/v2ray.service <<-EOF
 Description=V2Ray Service
 Documentation=https://www.v2ray.com/ https://www.v2fly.org/
 After=network.target nss-lookup.target
+
 [Service]
 # If the version of systemd is 240 or above, then uncommenting Type=exec and commenting out Type=simple
 #Type=exec
@@ -55,13 +60,15 @@ Type=simple
 # By uncommenting User=nobody and commenting out User=root, the service will run as user nobody.
 # More discussion at https://github.com/v2ray/v2ray-core/issues/1011
 User=root
+#User=nobody
 Environment="V2RAY_VMESS_AEAD_FORCED=false"
 #CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 #AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/env v2ray.vmess.aead.forced=false /usr/bin/v2ray/v2ray run -config=/etc/v2ray/config.json
+ExecStart=/usr/bin/env v2ray.vmess.aead.forced=false /usr/bin/v2ray/v2ray run -config /etc/v2ray/config.json
 #Restart=on-failure
 Restart=always
+
 [Install]
 WantedBy=multi-user.target
 EOF
@@ -78,6 +85,7 @@ sed -i "/\/\/include_ban_ad/r $ban_ad" $CONFIG_JSON
 sed -i "s#//include_ban_ad#,#" $CONFIG_JSON
 
 # ---------------- run service ----------------
+systemctl daemon-reload
 systemctl enable v2ray
 systemctl start v2ray
 
