@@ -34,3 +34,5 @@ LINUX AND BASH
         [[ -e FILE ]]       # 存在
         [[ -d FILE ]]       # 目录
         [[ -f FILE ]]       # 文件
+
+- `nano <file>`: 修改文件

@@ -18,11 +18,11 @@ PORT=$(shuf -i20001-65535 -n1)
 
 # ---------------- fetch v2ray files ----------------
 
-echo $TMP_FILE
-curl -sS -H "Accept: application/vnd.github.v3+json" -o "$TMP_FILE" 'https://api.github.com/repos/v2fly/v2ray-core/releases/latest'
-RELEASE_VERSION="$(sed 'y/,/\n/' "$TMP_FILE" | grep 'tag_name' | awk -F '"' '{print $4}')"
+# echo $TMP_FILE
+# curl -sS -H "Accept: application/vnd.github.v3+json" -o "$TMP_FILE" 'https://api.github.com/repos/v2fly/v2ray-core/releases/latest'
+# RELEASE_VERSION="$(sed 'y/,/\n/' "$TMP_FILE" | grep 'tag_name' | awk -F '"' '{print $4}')"
 
-# RELEASE_VERSION="v4.45.2"  # 5.0 以上好像有bug
+RELEASE_VERSION="v4.45.2"  # 5.0 以上好像有bug
 
 echo -e "Latest v2ray version: $yellow$RELEASE_VERSION$none"
 

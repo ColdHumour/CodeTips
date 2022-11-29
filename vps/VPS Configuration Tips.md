@@ -2,24 +2,6 @@ VPS CONFIGURATION TIPS
 =============================
 
 
-
-## **基本Linux操作**
-
-一般选择 Ubuntu 21.10 x64
-
-    > passwd
-    
-    > apt-get update
-    > apt-get upgrade
-    > apt install net-tools
-    > apt install firewalld
-    
-    > ifconfig
-
----
-
-
-
 ## **常用工具**
 
 - [IPCheck1](http://ip100.info/check)
@@ -31,24 +13,30 @@ VPS CONFIGURATION TIPS
 ---
 
 
+## **参考资料**
 
-## V2RAY
-
-1. 准备工作
-
-### 参考资料
+### guide
 
 - https://guide.v2fly.org/
 
-- https://toutyrater.github.io
-
-- https://tlanyan.me/v2ray-tutorial/
-
 - https://www.4spaces.org/install-v2ray-on-debian-2021/
+
+- https://www.clloz.com/programming/assorted/2019/11/24/v2ray-install-configuration/
+
+- https://ailitonia.com/archives/v2ray%e5%ae%8c%e5%85%a8%e9%85%8d%e7%bd%ae%e6%8c%87%e5%8d%97/
 
 - https://www.itblogcn.com/article/1501.html
 
-### VPS Server Hosts
+### repo
+
+- https://github.com/v2fly/fhs-install-v2ray/
+
+- https://github.com/xyz690/v2ray/tree/master
+
+---
+
+
+## **VPS Server Hosts**
 
 - [Vultr](https://www.vultr.com): cloud instance; no ipv6
 
@@ -64,89 +52,22 @@ VPS CONFIGURATION TIPS
 
 - https://www.ionos.com
 
-2. 快速部署
 
-参考 https://www.itblogcn.com/article/1501.html
+---
 
-### Server 端
+## **Server 端**
 
-    > bash <(curl -s -L https://raw.githubusercontent.com/xyz690/v2ray/master/go.sh)
+在合适的目录下
 
-### 检查状态
+    > nano init.sh
 
-    > systemctl status v2ray
+复制脚本进去，`Ctrl + x`，`y`，`Enter`
 
-如果 failed 首先检查运行命令是否 `/usr/bin/v2ray/v2ray run -config /etc/v2ray/config.json`，为否则
+    > chmod +x ./init.sh
+    > ./init.sh
+    > /etc/codetips/vps/mincfg.sh
 
-    > nano /usr/lib/systemd/system/v2ray.service
-
-修改 `ExecStart=` 后面的对应部分，然后
-
-    > systemctl daemon-reload; systemctl restart v2ray
-
-再检查是否 failed，如果仍是，则用
-
-    > /usr/bin/v2ray/v2ray run -config /etc/v2ray/config.json
-
-查看报错信息，并修改配置文件
-
-    > nano /etc/v2ray/config.json
-
-再 restart 看直到 active 为止
-
-3. 手动完整部署
-
-### Server 端
-
-    > bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
-    > bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-dat-release.sh)
-
-修改配置文件
-
-    > nano /usr/local/etc/v2ray/config.json
-
-主要修改 "port", "id"，其中 uuid 可以[在线生成](https://www.uuidgenerator.net/)，示例文本为
-
-          {
-            "inbounds": [{
-                "port": <port>,
-                "protocol": "vmess",
-                "settings": {
-                  "clients": [{
-                      "id": "<uuid>",
-                      "alterId": 0
-                  }]
-                }
-            }],
-            "outbounds": [{
-                "protocol": "freedom",
-                "settings": {}
-            }]
-          }
-
-修改好可以查看配置文件
-
-    > cat /usr/local/etc/v2ray/config.json
-
-然后需要检查端口是否开通 tcp
-
-    > sudo ufw status verbose
-    > sudo ufw allow <port>/
-    > sudo ufw allow <port>/tcp
-    > systemctl enable firewalld.service
-    > systemctl start firewalld.service
-    > firewall-cmd --zone=public --list-ports
-    > firewall-cmd --zone=public --add-port=<port>/tcp --permanent
-    > firewall-cmd --zone=public --add-port=<port>/udp --permanent
-
-之后配置启动
-
-    > systemctl enable v2ray
-    > systemctl start v2ray
-
-或者
-
-    > service v2ray start
+对照屏幕显示信息设置客户端
 
 可以使用
 
@@ -154,7 +75,7 @@ VPS CONFIGURATION TIPS
 
 执行相应指令
 
-### Windows 端
+## **Windows 端**
 
 (1) 使用v2rayN
 
@@ -269,9 +190,7 @@ PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 
             ]
           }
 
-
-
-### Android 端
+## **Android 端**
 
 下载并安装 [V2rayNG（推荐）](https://github.com/2dust/v2rayNG/releases) 或 [BifrostV](https://apkpure.com/bifrostv/com.github.dawndiy.bifrostv)
 
