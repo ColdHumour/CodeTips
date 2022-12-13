@@ -54,6 +54,30 @@ pause
 
 系统盘（右键）- 属性 - 常规 - 磁盘清理 - 清理系统文件
 
+
+#### 添加小鹤双拼方案
+
+`win + r`，运行 regedit
+
+在 `\HKEY_CURRENT_USER\Software\Microsoft\InputMethod\Settings\CHS` 下新建字符串值
+
+名为 `UserDefinedDoublePinyinScheme0`，值为 `小鹤双拼*2*^*iuvdjhcwfg^xmlnpbksqszxkrltvyovt`
+
+在输入法设置中设置 小鹤双拼 为默认选择
+
+
+#### 右键新建没有 txt
+
+`win + r`，运行 regedit
+
+在 `HKEY_CURRENT_USER\Software\Classes\CLSID` 下新建项，重命名为 `{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}`
+
+在该项下新建项，重命名为 `InprocServer32`
+
+修改 `InprocServer32` 中默认字符串值为空
+
+重启电脑
+
 ---
 
 
