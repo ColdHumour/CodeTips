@@ -1,6 +1,6 @@
 #main-menubar > menu {
     -moz-box-ordinal-group: 1 !important;
-    font-size: 13px !important;
+    font-size: 15px !important;
 }  /*选单列 */
 
 #main-menubar menu menupopup * {
@@ -37,16 +37,16 @@
 }  /*分页列 */
 
 #main-window:not([sizemode="maximized"]) #TabsToolbar {
-    top: 105px !important;
+    top: 103px !important;
 }  /*分页列 */
 
 #main-window:not([chromehidden*="toolbar"]) #navigator-toolbox {
     padding-bottom: 42px !important;
 }
 
-#tabbrowser-tabs {
+/*#tabbrowser-tabs {
     width: 120vw !important;
-}
+}*/
 
 /* hide line above navigation toolbar appearing in some cases */
 #main-window:not([tabsintitlebar]) #nav-bar,

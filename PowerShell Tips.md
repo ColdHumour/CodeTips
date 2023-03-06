@@ -11,7 +11,7 @@ POWERSHELL BEGINNER TIPS
 
 ### 版本检查
 
-```powershell
+```shell
 > $PSVersionTable
 ```
 
@@ -29,19 +29,19 @@ POWERSHELL BEGINNER TIPS
 
 检查权限
 
-```powershell
+```shell
 > Get-ExecutionPolicy
 ```
 
 如果不是 RemoteSigned，切到 PowerShell(Admin)
 
-```powershell
+```shell
 > Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
 ```
 
 使用 PowerShell ISE
 
-```powershell
+```shell
 > which powershell_ise.exe
 ```
 
@@ -55,19 +55,19 @@ ConEmu 新建标签页时可以自由选择 PowerShell 或者 PowerShell(Admin)�
 
 1) 检查选项是否可以 Pipeline 输入
 
-```powershell
+```shell
 > Get-Help -Name XXXX -Full
 ```
 
 如果接受 ByValue 则可以
 
-```powershell
+```shell
 > "xxxx" | XXXX
 ```
 
 如果接受 ByParameters 则需要 
 
-```powershell
+```shell
 > $obj = [PSCustomObject]@{<Param>='xxxx'}
 > $obj | XXXX
 ```
@@ -78,8 +78,43 @@ ConEmu 新建标签页时可以自由选择 PowerShell 或者 PowerShell(Admin)�
 
 4) 代码块：运行代码字符串
 
-```powershell
+```shell
 $newThing = { Write-Host "Hi! I am in a script block" }
 & $newThing
 ```
 
+
+# Excel 交互
+
+```shell
+param(
+    [String]$xlsxfile
+)
+
+$targetSheet
+
+$path = Get-Location
+$xlsxfile = $path.Tostring() + "\" + $xlsxfile
+Write-Host -ForegroundColor yellow "Opening $path" -BackgroundColor black
+
+$ExcelObj = New-Object -comobject Excel.Application
+
+Try {
+    $WorkBook = $ExcelObj.Workbooks.Open($xlsxfile)
+    Foreach ($Sheet in $WorkBook.Sheets) {
+        If ($Sheet.Name -ne $targetSheet) {
+            $Sheet.Delete()
+        }
+    }
+    $Sheet = $WorkBook.Sheets.Item($targetSheet)
+
+    $output = $path.Tostring() + "\output.xlsx"
+    If (Test-Path $output) {
+        Remove-Item $output
+    }
+    $WorkBook.SaveAs($output)
+} Finally {
+    $ExcelObj.Quit()
+    Write-Host -ForegroundColor yellow "Done." -BackgroundColor black
+}
+```
