@@ -158,6 +158,30 @@ PYTHON CONFIGURATION TIPS
 --------
 
 
+## pandas 2.0 pickle/shelve 读取错误
+
+在 `~/site-packages/pandas/core/indexes` 下创建 `numeric.py`：
+
+        from pandas.core.indexes.base import Index
+
+        class NumericIndex(Index):
+            pass
+
+        class IntegerIndex(NumericIndex):
+            pass
+
+        class Int64Index(IntegerIndex):
+            pass
+
+        class UInt64Index(IntegerIndex):
+            pass
+
+        class Float64Index(NumericIndex):
+            pass
+
+--------
+
+
 
 ## CVXOPT
 
