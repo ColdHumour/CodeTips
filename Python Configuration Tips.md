@@ -17,7 +17,7 @@ PYTHON CONFIGURATION TIPS
 
     再 --all 即可
 
-3. 升级 python
+3. 升级 python 大版本（如 3.9 到 3.10）
 
         conda install -c anaconda python=X.X
 
@@ -35,7 +35,14 @@ PYTHON CONFIGURATION TIPS
     
         conda clean -a  # 清除 tar 包和 module 包
 
-5. 代理设置
+5. 锁定某些 pkgs 不升级（比如被坑过很多回的 plotly 不支持 ipywidgets 8.X）
+
+    在 ~anaconda/conda-meta/pinned 文件中写入，示例格式
+
+        numpy 1.7.X
+        scipy ==0.14.2
+
+6. 代理设置
 
     打开 \~/\<user\>/.condarc 输入
 
@@ -47,16 +54,19 @@ PYTHON CONFIGURATION TIPS
 -------------
 
 
-
 ## JUPYTER NOTEBOOK
 
-*版本6.30+*
+*版本7+*
 
-1. 创建个性化配置文件
+1. 启动
+
+        jupyter nbclassic
+
+2. 创建个性化配置文件
 
         jupyter server --generate-config
 
-2. 确认kernel路径
+3. 确认kernel路径
 
         jupyter kernelspec list
     
@@ -64,7 +74,7 @@ PYTHON CONFIGURATION TIPS
     
         一般为 ~\Anaconda\python.exe
 
-3. Windows下，打开
+4. Windows下，打开
    
         C:\Documents and Settings\<username>\.jupyter\jupyter_server_config.py
     
@@ -72,7 +82,7 @@ PYTHON CONFIGURATION TIPS
     
         C:\users\<username>\.jupyter\jupyter_server_config.py
 
-4. 在文件开头加入
+在文件开头加入
 
         c.ServerApp.root_dir = u'F:\\lab\\'     # working directory for self-defined packages
         c.FileContentsManager.root_dir = u'F:\\lab\\notebooks'    # default directory for notebooks
@@ -123,6 +133,26 @@ PYTHON CONFIGURATION TIPS
         if spec:
             _bootstrap._exec(spec, module)
         return sys.modules[name]
+
+---
+
+
+## JUPYTER LAB
+
+鉴于 Jupyter lab 目前还有一些影响使用的 bug，这里先把能解决的部分列出来，剩余的慢慢补充。
+
+1. 主题
+
+找到 `~anaconda\share\jupyter\lab\themes\index.css`，对照 custom.css 比较关键字调整字体、颜色等
+
+2. Error `could not determine jupyterlab build status without Node.js`
+
+        conda install -c conda-forge nodejs
+
+3. Error `Could not determine npm prefix [WinError 2]`
+
+找到 `~anaconda\Lib\site-packages\jupyter_lsp\types.py` 里的 `def _npm_prefix()` 方法，把 "npm" 改成 "npm.cmd"
+
 
 ---
 
