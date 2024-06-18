@@ -38,14 +38,17 @@ PYTHON TIPS
         from io import BytesIO
         from PIL import Image
         from selenium import webdriver
+        from selenium.webdriver.firefox.service import Service as FirefoxService
+        from selenium.webdriver.firefox.options import Options
 
-        FIREFOX = r"C:\Program Files\Mozilla Firefox\firefox.exe"
+        options = Options()
+        options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
         GECKODRIVER = r"C:\Program Files\Mozilla Firefox\geckodriver.exe"
 
         target_folder = os.path.join(os.path.expanduser("~"), "Downloads")
         os.chdir(target_folder)
 
-        driver = webdriver.Firefox(firefox_binary=FIREFOX, executable_path=GECKODRIVER)
+        driver = webdriver.Firefox(options=options, service=FirefoxService(executable_path=GECKODRIVER))
 
         driver.set_window_size(1000, 1000)
         driver.execute_script("document.body.style.transform='scale(1)';")
