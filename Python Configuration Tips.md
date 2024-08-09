@@ -209,21 +209,28 @@ PYTHON CONFIGURATION TIPS
         class Float64Index(NumericIndex):
             pass
 
---------
+---
 
 
+## pillow
 
-## CVXOPT
+1. `Import Error: DLL module cannot be loaded __imgaing` at `from PIL import Image`
 
-1. 下载 cvxopt 的 whl 文件: http://www.lfd.uci.edu/~gohlke/pythonlibs/#cvxopt
+    - 从 [pillow](https://pypi.org/project/pillow) 下载对应的 `.whl` 文件，例如 cp39-win_amd64
 
-2. 如果 pip install <cvxopt.whl> 出错，则先安装 [numpy+mkl](http://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy)
+    - 从程序打开 Anaconda Powershell Prompt
 
---------
+    - pip install pillow~.whl
 
+
+----
 
 
 ## OTHER PKGS
+
+- conda install -c conda-forge cvxopt
+
+- conda install -c conda-forge cvxpy
 
 - conda install selenium
 
