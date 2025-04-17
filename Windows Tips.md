@@ -134,7 +134,7 @@ pause
 - 序列公式，即某些函数输入可以是 Range 而非单个的值，按 `Ctrl + Shift + Enter` 执行，执行后公式最外侧会显示 `{}`。此功能配合 SUBTOTAL 等逆天函数可以实现在一个单元格中计算股票一段时间的波动率乃至最大回撤：
 
         =STDEV.S(A3:A100/A2:A99)*SQRT(245)  # 波动率
-        =MIN(A2:A100/SUBTOTAL(4,OFFSET(A2:A100,ROW(A2:A100)-ROW(A2:A100),0,ROW(A2:A100)-ROW(INDIRECT(A2))+1)))-1  # 最大回撤
+        =MIN(A2:A100/SUBTOTAL(4,OFFSET(A2:A100,ROW(A2:A100)-ROW(A2:A100),0,ROW(A2:A100)-ROW(A2)+1)))-1  # 最大回撤
 
 - 对字符串形式存在的公式求值，需要在 `公式-名称管理器` 中调用 EVALUATE 函数
 
