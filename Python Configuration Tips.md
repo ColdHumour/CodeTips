@@ -222,6 +222,14 @@ PYTHON CONFIGURATION TIPS
 
     - pip install pillow~.whl
 
+---
+
+## gmpy2
+
+- conda install gmpy2
+
+- `DLL load failed while importing gmpy2`：从 [gmpy2](https://pypi.org/project/gmpy2) 下载对应的 `.whl` 文件，例如 cp39-win_amd64，然后参照上面
+
 
 ----
 
@@ -237,8 +245,6 @@ PYTHON CONFIGURATION TIPS
 - conda install termcolor
 
 - conda install gevent
-
-- conda install gmpy2
 
 - conda install arch -c bashtage
 

@@ -14,7 +14,9 @@ CYTHON TIPS
 
 ### (1) 64位 Python 3.5 及以上
 
-直接安装[Visual C++ Build Tools 2019](https://visualstudio.microsoft.com/zh-hans/downloads/)
+直接安装[Visual C++ Build Tools 2022](https://visualstudio.microsoft.com/zh-hans/downloads/)
+
+日常需要注意更新，`设置 - 应用 - 安装的应用 - Microsoft Visual Studio Installer - 修改`
 
 ### (2) 32位 Python 3.3 及以上
 
