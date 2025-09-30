@@ -62,6 +62,8 @@ PYTHON CONFIGURATION TIPS
 
         jupyter nbclassic
 
+        如果找不到命令需要 conda install nbclassic
+
 2. 创建个性化配置文件
 
         jupyter server --generate-config
