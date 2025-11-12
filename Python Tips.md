@@ -129,4 +129,25 @@ PYTHON TIPS
 
 如果用 jupyter notebook 运行的话先重启 kernal，再打开代码输出的路径，删掉所有文件，重新运行
 
+--------
 
+## 更便捷的 Excel 文件修改
+
+        # name = ...
+        # df = ...
+        with pd.ExcelWriter(<文件路径>, engine='xlsxwriter') as writer:
+            workbook = writer.book
+            format1 = workbook.add_format({'font_name': '微软雅黑', 'font_size': 9})  # 更多关键字可查AI
+            format2 = workbook.add_format({'font_name': '微软雅黑', 'font_size': 9, 'num_format': '#,##0.'})
+
+                df.to_excel(writer, sheet_name=name, index=False)
+                ncols = len(df.columns)
+
+                sheet = writer.sheets[name]
+                
+                # 列的统一属性
+                sheet.set_column('A:A', 10, format1)  # 列宽、格式
+                sheet.set_column(2, ncols-1, 15, format2)
+
+                # 特定单元格内容与格式
+                worksheet.write(0, col_idx, df.columns[col_idx], format1)
