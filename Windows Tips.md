@@ -89,6 +89,13 @@ pause
 桌面快捷方式 - 右键 · 属性 - 快捷方式 tab - 目标后添加 `--proxy-server=socks5://127.0.0.1:XXXX`
 
 
+#### 软件指定安装目录
+
+用管理员模式打开 cmd 定位到 exe 所在位置，运行
+        
+        <~.exe> /D="<custom path>"
+
+
 ---
 
 
