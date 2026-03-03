@@ -218,7 +218,7 @@ PYTHON CONFIGURATION TIPS
 
 1. `Import Error: DLL module cannot be loaded __imgaing` at `from PIL import Image`
 
-    - 从 [pillow](https://pypi.org/project/pillow) 下载对应的 `.whl` 文件，例如 cp39-win_amd64
+    - 从 [pillow](https://pypi.org/project/pillow/) 下载对应的 `.whl` 文件，例如 cp39-win_amd64
 
     - 从程序打开 Anaconda Powershell Prompt
 

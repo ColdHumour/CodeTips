@@ -129,6 +129,8 @@ PYTHON TIPS
 
 如果用 jupyter notebook 运行的话先重启 kernal，再打开代码输出的路径，删掉所有文件，重新运行
 
+使用 win32com dispatch 的时候要注意权限（UAC）问题，在管理员权限运行的 cmd 中启动的 Excel 实例，和双击打开的 Excel 实例不同，一些插件如 Wind 的可用性是不同的，使用时务必保持一致。
+
 --------
 
 ## 更便捷的 Excel 文件修改
