@@ -1,6 +1,8 @@
 OPEN WEBUI CONFIG TIPS
 ==========================
 
+### A. WINDOWS本地
+
 #### 0. 下载并安装
 
 - https://pypi.org/project/open-webui/
@@ -65,3 +67,45 @@ OPEN WEBUI CONFIG TIPS
             set NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1
 
             open-webui serve
+
+---------------
+
+### B. LINUX云服务器
+
+#### 0. 安装 docker
+
+    curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
+    
+    sudo systemctl enable --now docker
+
+#### 1. 拉取镜像并运行
+
+    sudo docker run -d -p 127.0.0.1:3000:8080 \
+      --add-host=host.docker.internal:host-gateway \
+      -v open-webui:/app/backend/data \
+      --name open-webui \
+      --restart always \
+      ghcr.io/open-webui/open-webui:main
+
+    sudo docker ps
+
+    sudo docker logs open-webui
+
+#### 2. 本地访问
+
+    ssh -L {本地port}:127.0.0.1:3000 {usr}@{server ip}
+
+    # 如不知道 ip 可用 `curl ifconfig.me` 查
+
+如果服务器不能直接访问，但是可以通过 socks5 访问，语句改成
+
+    ssh -o ProxyCommand="\"~\Git\mingw64\bin\connect.exe\" -S 127.0.0.1:{socks5 port} %%h %%p" -L {本地port}:127.0.0.1:3000 {usr}@{server ip}
+
+然后浏览器打开 `http://localhost:{本地port}` 即可
+
+#### 3. 控制
+
+    sudo docker stop/start/restart open-webui
+
+
+

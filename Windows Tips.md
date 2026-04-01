@@ -172,3 +172,12 @@ pause
 另存为 - “保存”按钮左边的“工具”下拉选“常规选项”，然后可以分别设置文件打开的密码和修改的密码
 
 
+#### 在终端里改代理
+
+其实很简单，改环境变量就可以，由于这个修改仅存活于当前终端，所以结束后关掉就好
+
+        set ALL_PROXY=socks5://127.0.0.1:XXXX
+        set HTTPS_PROXY=socks5://127.0.0.1:XXXX
+        set HTTP_PROXY=socks5://127.0.0.1:XXXX
+        set NO_PROXY=localhost,127.0.0.1,0.0.0.0,::1
+
