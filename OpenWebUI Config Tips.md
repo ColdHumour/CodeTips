@@ -68,6 +68,10 @@ OPEN WEBUI CONFIG TIPS
 
             open-webui serve
 
+#### 3. 配置 MCP
+
+
+
 ---------------
 
 ### B. LINUX云服务器
@@ -107,5 +111,46 @@ OPEN WEBUI CONFIG TIPS
 
     sudo docker stop/start/restart open-webui
 
+#### 4. 升级
 
+先备份数据以防万一
+
+    # 备份当前数据卷到当前目录
+    sudo docker run --rm \
+      -v open-webui:/source \
+      -v $(pwd):/backup \
+      alpine \
+      tar czf /backup/openwebui-backup-$(date +%Y%m%d).tar.gz -C /source .
+
+然后重新拉取容器
+
+    # 1. 停止并删除当前容器（卷不会被删除）
+    sudo docker rm -f open-webui
+
+    # 2. 拉取最新镜像
+    sudo docker pull ghcr.io/open-webui/open-webui:main
+
+    # 3. 用完全相同的参数重建容器（注意保留了卷）
+    sudo docker run -d \
+      -p 127.0.0.1:3000:8080 \
+      --add-host=host.docker.internal:host-gateway \
+      -v open-webui:/app/backend/data \
+      --name open-webui \
+      --restart always \
+      ghcr.io/open-webui/open-webui:main
+
+如果不想每次重新登录，可以先生成密钥
+
+    openssl rand -hex 32
+
+然后以后每次带密钥运行
+
+    sudo docker run -d \
+      -p 127.0.0.1:3000:8080 \
+      --add-host=host.docker.internal:host-gateway \
+      -v open-webui:/app/backend/data \
+      -e WEBUI_SECRET_KEY="你刚才复制的密钥" \
+      --name open-webui \
+      --restart always \
+      ghcr.io/open-webui/open-webui:main
 
