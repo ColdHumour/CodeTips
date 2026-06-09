@@ -7,15 +7,15 @@
     "inbounds": [
         {
             "port": <port>,
-            "protocol": "vmess",
+            "protocol": "vless",
             "settings": {
                 "clients": [
                     {
                         "id": "<uuid>",
-                        "level": 1,
-                        "alterId": 0
+                        "level": 1
                     }
-                ]
+                ],
+                "decryption": "none"
             },
             "streamSettings": {
                 "network": "kcp",
@@ -122,12 +122,5 @@
             //include_ban_ad
             //
         ]
-    },
-    "transport": {
-        "kcpSettings": {
-            "uplinkCapacity": 100,
-            "downlinkCapacity": 100,
-            "congestion": true
-        }
     }
 }

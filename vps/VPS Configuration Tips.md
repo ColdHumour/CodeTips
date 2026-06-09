@@ -93,6 +93,19 @@ PAC 模式无需其他配置，直连模式需通过浏览器设置代理，如 
 
 (2) Forward Proxy (v2rayN 目前不支持)
 
+TODO：
+
+- 新的 git 安装路径，改 mincfg.sh
+
+- vmess 模式已经过时，要改 vless 模式
+
+- 各种模板怎么改
+
+- nobody 账户的权限问题
+
+- tcp 模式与 flow tls 等项目设置
+
+
 在本地连接必须通过代理的情况下，需要在配置文件中特别设置，并用通常方式执行 v2ray.exe。
 
 浏览器端设置同 v2rayN，设置代理到 127.0.0.1:1080，此时网络流为 PC - vmess - internet proxy - vmess server - target，通过 internet proxy 的数据流为加密过的。
